@@ -49,14 +49,22 @@
 ## API Endpoints
 
 `GET '/api/taps'`: list of all Taps
+
 `POST '/api/taps'`: create a new Tap
+
 `PUT '/api/taps/tap_id'`: update a Tap
+
 `DELETE '/api/taps/tap_id'`: delete a Tap
 
+
 `GET '/api/beers'`: list of all Baps
+
 `POST '/api/beers'`: create a new Bap
+
 `PUT '/api/beer/beer_id'`: update a Beer
+
 `DELETE '/api/beer/beer_id'`: delete a Beer
+
 
 #### Feel free to modify, remove, or add endpoints as you see fit!
 

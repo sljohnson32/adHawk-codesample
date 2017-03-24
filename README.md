@@ -23,6 +23,13 @@ The following are mandatory minimum requirements:
   - "retire" the beer currently on tap
   - Update any of the beer info
   - If no beer is on tap, users should be able to create a new bar (on that tap).
+* When creating beers, data should be validated to ensure:
+  - The style is a valid style.
+  - The tap is a vaid tap that does not currently have a beer on tap.
+  - The beer must have a name and brewer.
+* When creating taps, data should be validated to ensure:
+  - The tap has a name.
+  - No existing tap has that name.
 
 
 ### Other features
