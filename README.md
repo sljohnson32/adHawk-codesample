@@ -37,8 +37,8 @@ The following are mandatory minimum requirements:
 
 
 #### Getting Started
-`cd api && npm start`
-`cd client && npm start`
+`cd api && npm install && npm start`
+`cd client && npm install && npm start`
 
 #### Notes
 There is a README in the /api folder explaining the API and data model structure.
