@@ -59,7 +59,6 @@ app.get('/api/beers', function (req, res) {
 })
 
 app.post('/api/beers', function (req, res) {
-  console.log('body:', req.body)
   return Beer.create(req.body)
     .then(tap => {
       res.status(200).json(tap)
