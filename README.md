@@ -14,6 +14,8 @@ We'd like you to complete as much of the following as you can in 10-20 hours. Pl
 
 The following are mandatory minimum requirements:
 
+### Tap Room Page
+
 * Users should be able to view a full list of taps.
 * Users should be able to create a new tap, and modify or delete existing taps.
 * Users should be able to view a tap in-depth:
@@ -31,14 +33,17 @@ The following are mandatory minimum requirements:
   - The tap has a name.
   - No existing tap has that name.
 
+### Beer Data Upload Page
 
-### Other features
-* It might be interesting to see aggregate data on all beers over time (breakdowns by name, brewer, style, how long the beer lasted, etc.) 
-* Anything else you can think of!
+* Users should be able to navigate to a new page that allows them to upload a CSV file of custom beer data (beer-data.csv).
+* After the CSV file is uploaded, users should be able to view the following statistics based on the data in the file:
+  - List of all unique beers with the associated brewer
+  - Total cost of all kegs
+  - Average glass price for each tap number
 
+## Implementation
 
-### Implementation
-* Use redux to store API data
+* Use redux to fetch API data and to generate the app's new state when creating, updating or deleting taps and beers.
 * Currently the API is very bare bones. It's sufficient to meet the above requirements, but hardly optimal. Feel free to add or change endpoints!
 * Everything else is up to you!
 
