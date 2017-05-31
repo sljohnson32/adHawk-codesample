@@ -38,7 +38,7 @@ The following are mandatory minimum requirements:
 * Users should be able to navigate to a new page that allows them to upload a CSV file of custom beer data (beer-data.csv).
 * After the CSV file is uploaded, users should be able to view the following statistics based on the data in the file:
   - List of all unique beers with the associated brewer
-  - Total cost of all kegs
+  - Best selling beer (highest total keg cost)
   - Average glass price for each tap number
 
 ## Implementation
