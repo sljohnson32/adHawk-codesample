@@ -43,9 +43,9 @@ The following are mandatory minimum requirements:
 
 ## Implementation
 
-* Use redux to fetch API data and to generate the app's new state when creating, updating or deleting taps and beers.
+* Use redux to manage API data and to generate the app's new state when creating, updating or deleting taps and beers.
 * Currently the API is very bare bones. It's sufficient to meet the above requirements, but hardly optimal. Feel free to add or change endpoints!
-* Everything else is up to you!
+* Everything else is up to you, impress us!
 
 
 #### Getting Started
