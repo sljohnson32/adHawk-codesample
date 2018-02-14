@@ -1,0 +1,10 @@
+.currentTaps-container {
+  margin: 5px auto;
+  padding: 40px;
+  color: white;
+  background: dodgerblue;
+}
+
+.tap-card {
+  height: 150px;
+}
