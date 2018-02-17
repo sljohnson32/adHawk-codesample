@@ -11,11 +11,8 @@ export default class TapCard extends Component {
     this.state = {
       expanded: false,
     };
+    this.toggleExpanded = this.toggleExpanded.bind(this);
   }
-
-  handleExpandChange = (expanded) => {
-    this.setState({expanded: expanded});
-  };
 
   toggleExpanded = () => {
     this.setState({expanded: !this.state.expanded});
@@ -26,7 +23,10 @@ export default class TapCard extends Component {
     let { id, name } = this.props;
 
     return (
-      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+      <Card
+        expanded={ this.state.expanded }
+        style={ styles.card }
+      >
         <CardTitle
           title={ name }
         >
@@ -41,37 +41,21 @@ export default class TapCard extends Component {
           title="Tap History"
           expandable={true}
         />
-        <CardText expandable={true}>
-          This is a table of all previous beers!
+        <CardText
+          expandable={true}>
+          This will be a table of all previous beers!
         </CardText>
         <CardActions>
-          <FlatButton label={ this.state.expanded ? "Close History" : "See History" } onClick={this.toggleExpanded} />
+          <FlatButton
+            label={ this.state.expanded ? "Close History" : "See History" } onClick={this.toggleExpanded} />
         </CardActions>
       </Card>
     );
   }
 }
 
-
-// class TapCard extends Component {
-//
-//   render() {
-//     let { id, name } = this.props;
-//
-//     return (
-//       <div className="tap-card">
-//         <section className='tap-header'>
-//           <h3>{name}</h3>
-//           <PopUp />
-//         </section>
-//         <section className="tap-info">
-//           <h4>Current Beer</h4>
-//           <p>Beer Type</p>
-//           <h4>Brewer</h4>
-//         </section>
-//       </div>
-//     );
-//   }
-// }
-//
-// export default TapCard;
+const styles = {
+  card: {
+    width: "300px"
+  }
+}
