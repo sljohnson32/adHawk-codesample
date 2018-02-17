@@ -5,6 +5,7 @@ import './CurrentTaps-styles.css';
 class CurrentTaps extends Component {
 
   render() {
+
     let currentTaps = this.props.tapsData.map(tap => {
       return <TapCard {...tap} key={ tap.id } />;
     })

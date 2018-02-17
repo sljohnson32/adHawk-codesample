@@ -12,9 +12,10 @@ export default class PopUp extends Component {
 
   state = {
     beerName: "",
-    open: false,
     breweryName: "",
-    beerType: ""
+    beerStyle: "",
+    date: null,
+    open: false
   };
 
   //handle open/close dialog
@@ -23,7 +24,7 @@ export default class PopUp extends Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false, beerName: "", searchText: "" });
+    this.setState({ open: false, beerName: "", breweryName: "", searchText: "", date: null, });
   };
 
   //handleInput
@@ -33,10 +34,15 @@ export default class PopUp extends Component {
     });
   };
 
+  //handleDateChangehandleChange = (event, date) => {
+  handleDateChange = (event, date) => {
+    this.setState({ date: date });
+  };
+
   //autocomplete
   handleTypeInput = (searchText) => {
     this.setState({
-      beerType: searchText,
+      beerStyle: searchText,
     });
   };
   handleBreweryInput = (searchText) => {
@@ -45,7 +51,24 @@ export default class PopUp extends Component {
     });
   };
 
+  //add beer
+  addBeer(tapId) {
+    let { beerName, breweryName, beerStyle } = this.state;
+    let newBeer = {
+      tap_id: tapId,
+      name: beerName,
+      brewer: breweryName,
+      style: beerStyle
+    }
+    console.log('Add Beer', newBeer)
+    // this.props.postBeer(tapId, newBeer);
+    this.handleClose();
+  }
+
   render() {
+
+    let { tapId, allBreweries } = this.props
+
     const actions = [
       <FlatButton
         label="Cancel"
@@ -55,11 +78,9 @@ export default class PopUp extends Component {
       <RaisedButton
         label="Add Beer"
         primary={ true }
-        onClick={ this.handleClose }
+        onClick={ () => this.addBeer(tapId) }
       />
     ];
-
-
 
     return (
       <div>
@@ -81,28 +102,36 @@ export default class PopUp extends Component {
           <p style={ pStyle }>Reminder: this will retire the current beer on tap</p>
           <TextField
             id="beerName"
+            floatingLabelText="Name of beer"
             hintText="Name of beer"
             value={ this.state.beerName }
             onChange={ this.handleChange }
           />
           <AutoComplete
             hintText="Type of beer"
-            searchText={ this.state.beerType }
+            floatingLabelText="Type of beer"
+            searchText={ this.state.beerStyle }
             onUpdateInput={ this.handleTypeInput }
             dataSource={ beerStyles }
             filter={ (searchText, key) => (key.indexOf(searchText) !== -1) }
             openOnFocus={ true }
           />
           <AutoComplete
+            floatingLabelText="Name of brewery"
             hintText="Name of brewery"
             searchText={ this.state.breweryName }
             onUpdateInput={ this.handleBreweryInput }
-            dataSource={beerStyles}
-            filter={ (searchText, key) => (key.indexOf(searchText) !== -1) }
             openOnFocus={ true }
+            filter={ AutoComplete.caseInsensitiveFilter }
+            dataSource={ allBreweries }
           />
-
-          <DatePicker hintText="Start Date" />
+          <DatePicker
+            floatingLabelText="Start Date"
+            hintText="Start Date"
+            mode="landscape"
+            value={this.state.date}
+            onChange={this.handleDateChange}
+          />
         </Dialog>
       </div>
     );
@@ -141,3 +170,12 @@ const pStyle = {
   margin: "0",
   paddingBottom: "20px",
 }
+
+// <AutoComplete
+// hintText="Name of brewery"
+// searchText={ this.state.breweryName }
+// onUpdateInput={ this.handleBreweryInput }
+// dataSource={beerStyles}
+// filter={ (searchText, key) => (key.indexOf(searchText) !== -1) }
+// openOnFocus={ true }
+// />

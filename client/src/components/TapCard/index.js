@@ -16,12 +16,12 @@ export default class TapCard extends Component {
   }
 
   toggleExpanded = () => {
-    this.setState({expanded: !this.state.expanded});
+    this.setState({ expanded: !this.state.expanded });
   };
 
   render() {
 
-    let { id, name, beersData } = this.props;
+    let { id, name, beersData, allBreweries } = this.props;
 
     let currentBeer = beersData.filter(beer => {
       return beer.tap_id == id && beer.on_tap;
@@ -35,7 +35,7 @@ export default class TapCard extends Component {
         <CardTitle
           title={ name }
         >
-          <PopUp tapId={ id } />
+          <PopUp tapId={ id } allBreweries={ allBreweries } />
         </CardTitle>
         <CardText>
           <BeerCard currentBeer={ currentBeer[0] } />

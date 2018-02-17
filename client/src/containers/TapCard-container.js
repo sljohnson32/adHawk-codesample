@@ -5,13 +5,14 @@ import { postBeer } from '../actions';
 
 const mapStateToProps = state => (
   {
-    beersData: state.beersData
+    beersData: state.beersData,
+    allBreweries: state.beersData.map(beer => beer.brewer)
   }
 );
 
 const mapDispatchToProps = dispatch => ({
-  addBeer: () => {
-    dispatch(postBeer())
+  addBeer: (currentId, newBeer) => {
+    dispatch(postBeer(currentId, newBeer))
   }
 });
 
