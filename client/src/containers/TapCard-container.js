@@ -5,7 +5,7 @@ import { postBeer } from '../actions';
 
 const mapStateToProps = state => (
   {
-    beerData: state.beerData
+    beersData: state.beersData
   }
 );
 

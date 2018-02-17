@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TapCard from '../TapCard'
+import TapCard from '../../containers/TapCard-container'
 import './CurrentTaps-styles.css';
 
 class CurrentTaps extends Component {
