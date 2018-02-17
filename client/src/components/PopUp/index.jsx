@@ -48,13 +48,13 @@ export default class PopUp extends Component {
     const actions = [
       <FlatButton
         label="Cancel"
-        secondary={true}
-        onClick={this.handleClose}
+        secondary={ true }
+        onClick={ this.handleClose }
       />,
       <RaisedButton
         label="Add Beer"
-        primary={true}
-        onClick={this.handleClose}
+        primary={ true }
+        onClick={ this.handleClose }
       />
     ];
 
@@ -62,36 +62,41 @@ export default class PopUp extends Component {
 
     return (
       <div>
-        <RaisedButton label="Add New Beer" onClick={this.handleOpen} />
+        <RaisedButton
+          label="Add New Beer"
+          onClick={ this.handleOpen }
+        />
         <Dialog
-          actions={actions}
-          modal={false}
-          contentStyle={style}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
+          actions={ actions }
+          contentStyle={ contentStyle }
+          modal={ false }
+          open={ this.state.open }
+          onRequestClose={ this.handleClose }
+          title="Add Beer"
+          titleStyle={ titleStyle }
         >
-          Reminder: this will retire the current beer on tap
+          <p style={ pStyle }>Reminder: this will retire the current beer on tap</p>
           <TextField
             id="beerName"
             hintText="Name of beer"
-            value={this.state.beerName}
-            onChange={this.handleChange}
+            value={ this.state.beerName }
+            onChange={ this.handleChange }
           />
           <AutoComplete
             hintText="Type of beer"
-            searchText={this.state.beerType}
-            onUpdateInput={this.handleTypeInput}
-            dataSource={beerStyles}
-            filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
-            openOnFocus={true}
+            searchText={ this.state.beerType }
+            onUpdateInput={ this.handleTypeInput }
+            dataSource={ beerStyles }
+            filter={ (searchText, key) => (key.indexOf(searchText) !== -1) }
+            openOnFocus={ true }
           />
           <AutoComplete
             hintText="Name of brewery"
-            searchText={this.state.breweryName}
-            onUpdateInput={this.handleBreweryInput}
+            searchText={ this.state.breweryName }
+            onUpdateInput={ this.handleBreweryInput }
             dataSource={beerStyles}
-            filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
-            openOnFocus={true}
+            filter={ (searchText, key) => (key.indexOf(searchText) !== -1) }
+            openOnFocus={ true }
           />
 
           <DatePicker hintText="Start Date" />
@@ -120,8 +125,16 @@ const beerStyles = [
   'Other'
 ];
 
-const style = {
+const contentStyle = {
   width: '400px',
-  maxWidth: 'none',
-  paddingTop: '40px'
 };
+
+const titleStyle = {
+  paddingBottom: '10px'
+}
+
+const pStyle = {
+  fontStyle: "italic",
+  margin: "0",
+  paddingBottom: "20px",
+}
