@@ -6,6 +6,11 @@ import UploadPage from '../UploadPage'
 import './App.css';
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.getAllTaps();
+  }
+
   render() {
     return (
       <div className="app-container">

@@ -15,13 +15,13 @@ function handleResponse(response) {
 }
 
 export function get(path) {
-  return fetch(`${host}/${path}`, {
+  return fetch(`${host}/api/${path}`, {
     method: 'get',
   }).then(handleResponse)
 }
 
 export function post(path, data) {
-  return fetch(`${host}/${path}`, {
+  return fetch(`${host}/api/${path}`, {
     method: 'post',
     body: JSON.stringify(data),
     headers,
@@ -29,7 +29,7 @@ export function post(path, data) {
 }
 
 export function put(path, data) {
-  return fetch(`${host}/${path}`, {
+  return fetch(`${host}/api/${path}`, {
     method: 'put',
     body: JSON.stringify(data),
     headers,
@@ -37,7 +37,7 @@ export function put(path, data) {
 }
 
 export function del(path, data) {
-  return fetch(`${host}/${path}`, {
+  return fetch(`${host}/api/${path}`, {
     method: 'delete',
     body: {},
   }).then(handleResponse)

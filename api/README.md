@@ -57,9 +57,9 @@
 `DELETE '/api/taps/tap_id'`: delete a Tap
 
 
-`GET '/api/beers'`: list of all Baps
+`GET '/api/beers'`: list of all Beers
 
-`POST '/api/beers'`: create a new Bap
+`POST '/api/beers'`: create a new Beer
 
 `PUT '/api/beer/beer_id'`: update a Beer
 

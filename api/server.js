@@ -102,6 +102,7 @@ init()
   return tap
 })
 .then(tap => {
+  console.log('tap', tap)
   return Beer.findAll()
     .then(beers => {
       if (!beers.length) {
@@ -125,4 +126,3 @@ init()
     console.log('Example app listening on port 4000!')
   })
 })
-

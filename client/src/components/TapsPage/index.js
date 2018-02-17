@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CurrentTaps from '../CurrentTaps';
+import CurrentTaps from '../../containers/CurrentTaps-container';
 
 class TapsPage extends Component {
 
