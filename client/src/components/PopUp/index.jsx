@@ -3,6 +3,8 @@ import NewBeerInput from '../Inputs';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import TextField from 'material-ui/TextField';
 import AutoComplete from 'material-ui/AutoComplete';
 import DatePicker from 'material-ui/DatePicker';
@@ -62,10 +64,12 @@ export default class PopUp extends Component {
 
     return (
       <div>
-        <RaisedButton
-          label="Add New Beer"
+        <FloatingActionButton
           onClick={ this.handleOpen }
-        />
+          mini={ true }
+        >
+          <ContentAdd />
+        </FloatingActionButton>
         <Dialog
           actions={ actions }
           contentStyle={ contentStyle }
