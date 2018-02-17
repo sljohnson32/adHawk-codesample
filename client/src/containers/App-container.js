@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import App from '../components/App';
-import { getAllTaps } from '../actions';
+import { getAllData } from '../actions';
 
 const mapStateToProps = state => (
   {
@@ -10,8 +10,8 @@ const mapStateToProps = state => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  getAllTaps: () => {
-    dispatch(getAllTaps())
+  getAllData: () => {
+    dispatch(getAllData())
   }
 });
 

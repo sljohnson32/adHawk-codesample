@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NewBeerInput from '../Inputs';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';

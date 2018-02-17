@@ -1,15 +1,14 @@
 import { get, post, put, del } from '../api_client'
 
-
 //GET TAPS
 const receiveAll = (allData) => {
   return {
-    type: 'RECEIVE_ALL_TAPS',
+    type: 'RECEIVE_ALL_DATA',
     allData
   }
 }
 
-export const getAllTaps = () => {
+export const getAllData = () => {
   let allData = {};
   return dispatch => {
     Promise.all([
@@ -41,6 +40,25 @@ export const postTap = (name) => {
       })
   }
 }
+
+//POST BEER
+const addBeer = (currentId, newBeer) => {
+  return {
+    type: 'ADD_BEER',
+    currentId,
+    newBeer
+  }
+}
+
+export const postBeer = (currentId, newBeer) => {
+  return dispatch => {
+    post('beers', newBeer)
+      .then(response => {
+        return dispatch(addBeer(currentId, response))
+      })
+  }
+}
+
 
 
 //PUT TAP

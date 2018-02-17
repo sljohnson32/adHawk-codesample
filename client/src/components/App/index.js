@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
 
   componentDidMount() {
-    this.props.getAllTaps();
+    this.props.getAllData();
   }
 
   render() {
