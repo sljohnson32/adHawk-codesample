@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TapCard from '../../containers/TapCard-container'
 import './CurrentTaps-styles.css';
+import Paper from 'material-ui/Paper';
 
 class CurrentTaps extends Component {
 
@@ -11,11 +12,23 @@ class CurrentTaps extends Component {
     })
 
     return (
-      <div className="currentTaps-container">
+      <Paper style={ styles.paper } zDepth={ 1 } >
+        <
         { currentTaps }
-      </div>
+      </Paper>
     );
   };
 };
 
 export default CurrentTaps;
+
+const styles = {
+  paper: {
+    boxSizing: "content-box",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: "10px",
+    padding: "10px"
+  }
+};
