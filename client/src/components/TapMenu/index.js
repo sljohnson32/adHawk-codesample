@@ -67,7 +67,6 @@ export default class TapMenu extends Component {
       start_date: date,
       on_tap: true
     }
-    console.log(newBeer)
     this.props.addBeer(newBeer, currentBeerId);
     this.handleClose();
   }
@@ -173,7 +172,6 @@ const beerStyles = [
   'Wheat Beer',
   'Other'
 ];
-
 
 const contentStyle = {
   width: '400px',

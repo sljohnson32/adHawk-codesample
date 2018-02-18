@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TapsHeader from '../TapsHeader'
 import TapCard from '../../containers/TapCard-container'
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
@@ -12,8 +13,11 @@ class CurrentTaps extends Component {
     })
 
     return (
-      <Paper style={ styles.paper } zDepth={ 1 } >
-        { currentTaps }
+      <Paper zDepth={ 1 } >
+        <TapsHeader addTap={ this.props.addTap } />
+        <Paper style={ styles.paper } zDepth={ 1 } >
+          { currentTaps }
+        </Paper>
       </Paper>
     );
   };
@@ -28,6 +32,7 @@ const styles = {
     flexDirection: "row",
     justifyContent: "center",
     marginTop: "10px",
-    padding: "10px"
+    padding: "10px",
+    flexWrap: "wrap"
   }
 };

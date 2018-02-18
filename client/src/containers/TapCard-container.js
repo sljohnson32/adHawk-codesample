@@ -8,7 +8,6 @@ const mapStateToProps = state => (
   {
     beersData: state.beersData,
     allBreweries: filterBrewers(state.beersData.map(beer => beer.brewer))
-    //need to add alpha ordering and removing dups
   }
 );
 

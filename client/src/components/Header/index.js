@@ -56,7 +56,7 @@ class Header extends Component {
     return (
       <AppBar
         title={ <span style={styles.title}>Beer Force One</span> }
-        onTitleClick={ handleTitleClick }
+        onTitleClick={ this.goHome }
         showMenuIconButton={ false }
         iconElementRight={ linkButton }
       />

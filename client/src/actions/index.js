@@ -17,7 +17,6 @@ export const getAllData = () => {
       get('beers')
         .then(response => allData.beers = response)
     ]).then(() => {
-        console.log(allData)
         return dispatch(receiveAll(allData))
     })
   }
@@ -25,16 +24,16 @@ export const getAllData = () => {
 
 
 //POST TAP
-const addTap = (tapData) => {
+const addTap = (newTap) => {
   return {
     type: 'ADD_TAP',
-    tapData
+    newTap
   }
 }
 
-export const postTap = (name) => {
+export const postTap = (tapData) => {
   return dispatch => {
-    post('taps', name)
+    post('taps', tapData)
       .then(response => {
         return dispatch(addTap(response))
       })

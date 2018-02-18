@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { postTap } from '../actions';
 import CurrentTaps from '../components/CurrentTaps';
 
 const mapStateToProps = state => (
@@ -7,4 +8,10 @@ const mapStateToProps = state => (
   }
 );
 
-export default connect(mapStateToProps, null)(CurrentTaps);
+const mapDispatchToProps = dispatch => ({
+  addTap: (newTap) => {
+    dispatch(postTap(newTap))
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CurrentTaps);
