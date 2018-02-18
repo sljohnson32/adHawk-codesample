@@ -5,7 +5,7 @@ const beersData = (state = [], action) => {
       return action.allData.beers
 
     case 'ADD_BEER':
-      let { currentId, newBeer } = action;
+      let { newBeer } = action;
       let newState = state.map(beer => {
         if (beer.tap_id == newBeer.tap_id && beer.on_tap) {
           beer.on_tap = false;

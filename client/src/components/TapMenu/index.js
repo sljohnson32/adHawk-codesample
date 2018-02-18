@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
+// import AddBeer from '../AddBeer';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Divider from 'material-ui/Divider';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 import TextField from 'material-ui/TextField';
 import AutoComplete from 'material-ui/AutoComplete';
 import DatePicker from 'material-ui/DatePicker';
 
-export default class PopUp extends Component {
+export default class TapMenu extends Component {
 
   state = {
     beerName: "",
@@ -45,6 +49,7 @@ export default class PopUp extends Component {
       beerStyle: searchText,
     });
   };
+
   handleBreweryInput = (searchText) => {
     this.setState({
       breweryName: searchText,
@@ -52,44 +57,55 @@ export default class PopUp extends Component {
   };
 
   //add beer
-  addBeer(tapId) {
-    let { beerName, breweryName, beerStyle } = this.state;
+  addBeer(tapId, currentBeerId) {
+    let { beerName, breweryName, beerStyle, date } = this.state;
     let newBeer = {
       tap_id: tapId,
       name: beerName,
       brewer: breweryName,
-      style: beerStyle
+      style: formatStyle(beerStyle),
+      start_date: date,
+      on_tap: true
     }
-    console.log('Add Beer', newBeer)
-    // this.props.postBeer(tapId, newBeer);
+    console.log(newBeer)
+    this.props.addBeer(newBeer, currentBeerId);
     this.handleClose();
   }
 
   render() {
 
-    let { tapId, allBreweries } = this.props
+    let { tapId, allBreweries, addBeer, currentBeerId } = this.props
 
     const actions = [
       <FlatButton
-        label="Cancel"
-        secondary={ true }
-        onClick={ this.handleClose }
+      label="Cancel"
+      secondary={ true }
+      onClick={ this.handleClose }
       />,
       <RaisedButton
-        label="Add Beer"
-        primary={ true }
-        onClick={ () => this.addBeer(tapId) }
+      label="Add Beer"
+      primary={ true }
+      onClick={ () => this.addBeer(tapId, currentBeerId) }
       />
     ];
 
     return (
       <div>
-        <FloatingActionButton
-          onClick={ this.handleOpen }
-          mini={ true }
+        <IconMenu
+          iconButtonElement={
+            <IconButton><MoreVertIcon /></IconButton>
+          }
+          targetOrigin={{horizontal: 'left', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
-          <ContentAdd />
-        </FloatingActionButton>
+          <MenuItem
+            primaryText="Add Beer"
+            onClick={ this.handleOpen }
+            />
+          <Divider />
+          <MenuItem primaryText="Edit Tap" />
+          <MenuItem primaryText="Delete Tap" />
+        </IconMenu>
         <Dialog
           actions={ actions }
           contentStyle={ contentStyle }
@@ -113,7 +129,7 @@ export default class PopUp extends Component {
             searchText={ this.state.beerStyle }
             onUpdateInput={ this.handleTypeInput }
             dataSource={ beerStyles }
-            filter={ (searchText, key) => (key.indexOf(searchText) !== -1) }
+            filter={ AutoComplete.caseInsensitiveFilter }
             openOnFocus={ true }
           />
           <AutoComplete
@@ -138,6 +154,7 @@ export default class PopUp extends Component {
   }
 }
 
+
 const beerStyles = [
   'Amber Ale',
   'Amber Lager',
@@ -157,6 +174,7 @@ const beerStyles = [
   'Other'
 ];
 
+
 const contentStyle = {
   width: '400px',
 };
@@ -171,11 +189,6 @@ const pStyle = {
   paddingBottom: "20px",
 }
 
-// <AutoComplete
-// hintText="Name of brewery"
-// searchText={ this.state.breweryName }
-// onUpdateInput={ this.handleBreweryInput }
-// dataSource={beerStyles}
-// filter={ (searchText, key) => (key.indexOf(searchText) !== -1) }
-// openOnFocus={ true }
-// />
+const formatStyle = data => {
+  return data.replace(' ', '_').toUpperCase()
+}

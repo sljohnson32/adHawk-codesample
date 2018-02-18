@@ -42,19 +42,19 @@ export const postTap = (name) => {
 }
 
 //POST BEER
-const addBeer = (currentId, newBeer) => {
+const addBeer = (newBeer) => {
   return {
     type: 'ADD_BEER',
-    currentId,
     newBeer
   }
 }
 
-export const postBeer = (currentId, newBeer) => {
+export const postBeer = (newBeer, currentBeerId) => {
   return dispatch => {
+    put('beers', currentBeerId, { on_tap: false })
     post('beers', newBeer)
       .then(response => {
-        return dispatch(addBeer(currentId, response))
+        return dispatch(addBeer(response))
       })
   }
 }

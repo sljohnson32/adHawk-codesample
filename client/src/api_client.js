@@ -28,8 +28,8 @@ export function post(path, data) {
   }).then(handleResponse)
 }
 
-export function put(path, data) {
-  return fetch(`${host}/api/${path}`, {
+export function put(path, id, data) {
+  return fetch(`${host}/api/${path}/${id}`, {
     method: 'put',
     body: JSON.stringify(data),
     headers,

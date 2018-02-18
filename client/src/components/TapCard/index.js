@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PopUp from '../PopUp';
 import TapMenu from '../TapMenu';
 import { BeerCard } from '../BeerCard';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
@@ -7,8 +6,8 @@ import FlatButton from 'material-ui/FlatButton';
 
 export default class TapCard extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       expanded: false,
     };
@@ -21,7 +20,7 @@ export default class TapCard extends Component {
 
   render() {
 
-    let { id, name, beersData, allBreweries } = this.props;
+    let { id, name, beersData, allBreweries, addBeer } = this.props;
 
     let currentBeer = beersData.filter(beer => {
       return beer.tap_id == id && beer.on_tap;
@@ -35,8 +34,7 @@ export default class TapCard extends Component {
         <CardTitle
           title={ name }
         >
-          <TapMenu />
-          <PopUp tapId={ id } allBreweries={ allBreweries } />
+          <TapMenu tapId={ id } allBreweries={ allBreweries } addBeer={ addBeer } currentBeerId={ currentBeer[0].id } />
         </CardTitle>
         <CardText>
           <BeerCard currentBeer={ currentBeer[0] } />
