@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TapCard from '../../containers/TapCard-container'
-import './CurrentTaps-styles.css';
 import Paper from 'material-ui/Paper';
+import AppBar from 'material-ui/AppBar';
 
 class CurrentTaps extends Component {
 
@@ -13,7 +13,6 @@ class CurrentTaps extends Component {
 
     return (
       <Paper style={ styles.paper } zDepth={ 1 } >
-        <
         { currentTaps }
       </Paper>
     );

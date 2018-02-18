@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PopUp from '../PopUp';
+import TapMenu from '../TapMenu';
 import { BeerCard } from '../BeerCard';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import Toggle from 'material-ui/Toggle';
 
 export default class TapCard extends Component {
 
@@ -35,6 +35,7 @@ export default class TapCard extends Component {
         <CardTitle
           title={ name }
         >
+          <TapMenu />
           <PopUp tapId={ id } allBreweries={ allBreweries } />
         </CardTitle>
         <CardText>
