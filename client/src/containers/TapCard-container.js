@@ -2,11 +2,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import TapCard from '../components/TapCard';
 import { postBeer } from '../actions';
+import { filterBrewers } from './utilities';
 
 const mapStateToProps = state => (
   {
     beersData: state.beersData,
-    allBreweries: state.beersData.map(beer => beer.brewer)
+    allBreweries: filterBrewers(state.beersData.map(beer => beer.brewer))
+    //need to add alpha ordering and removing dups
   }
 );
 
