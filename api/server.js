@@ -47,7 +47,7 @@ app.delete('/api/taps/:tap_id', function (req, res) {
 
   return Tap.destroy({ where: { id } })
     .then(() => {
-      res.status(202).json({ id })
+      res.status(202).json(`Tap with id: ${id} was deleted`)
     })
 })
 

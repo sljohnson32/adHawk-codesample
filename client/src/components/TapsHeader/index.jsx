@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TapForm from '../PopUpForms/TapForm'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';
@@ -8,10 +9,8 @@ import TextField from 'material-ui/TextField';
 
 export default class TapsHeader extends Component {
 
-
   state = {
-    open: false,
-    tapName: ""
+    open: false
   };
 
   //handle open/close dialog
@@ -20,40 +19,12 @@ export default class TapsHeader extends Component {
   };
 
   handleClose = () => {
-    this.setState({ open: false, tapName: "" });
+    this.setState({ open: false });
   };
 
-  // //handleInput
-  handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
-  };
 
-  //add tap
-  addTap = () => {
-    let { tapName } = this.state;
-    let newTap = {
-      name: tapName
-    }
-    this.props.addTap(newTap);
-    this.handleClose();
-  }
 
   render () {
-
-    const actions = [
-      <FlatButton
-        label="Cancel"
-        secondary={ true }
-        onClick={ this.handleClose }
-      />,
-      <RaisedButton
-        label="Add Tap"
-        primary={ true }
-        onClick={ this.addTap }
-      />
-    ];
 
     return (
       <div>
@@ -64,29 +35,12 @@ export default class TapsHeader extends Component {
         >
           <ContentAdd />
         </FloatingActionButton>
-        <Dialog
-          actions={ actions }
-          contentStyle={ styles.tapDialog }
-          modal={ false }
+        <TapForm
           open={ this.state.open }
-          onRequestClose={ this.handleClose }
-          title="Add Tap"
-        >
-          <TextField
-            id="tapName"
-            floatingLabelText="Name of tap"
-            hintText="Name of tap"
-            value={ this.state.tapName }
-            onChange={ this.handleChange }
-          />
-        </Dialog>
+          addTap={  this.props.addTap }
+          handleClose={ this.handleClose }
+        />
       </div>
     );
   }
 }
-
-const styles = {
-  tapDialog: {
-    width: '300px',
-  }
-};
