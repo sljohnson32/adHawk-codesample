@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
+import { beerStyles } from '../../utilities';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
@@ -10,7 +11,7 @@ export default class TapHistory extends Component {
       <TableRow key={ index }>
         <TableRowColumn>{ beer.name }</TableRowColumn>
         <TableRowColumn>{ beer.brewer }</TableRowColumn>
-        <TableRowColumn>{ beer.style }</TableRowColumn>
+        <TableRowColumn>{ beerStyles[beer.style] }</TableRowColumn>
         <TableRowColumn>{ beer.start_date }</TableRowColumn>
       </TableRow>
     )

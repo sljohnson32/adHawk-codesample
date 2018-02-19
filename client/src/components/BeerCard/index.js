@@ -1,4 +1,5 @@
 import React from 'react';
+import { beerStyles } from '../../utilities';
 
 export const BeerCard = (props) => {
   let { currentBeer } = props
@@ -7,7 +8,7 @@ export const BeerCard = (props) => {
     return (
       <div style={ styles.beerCard }>
         <h4>{ currentBeer.name }</h4>
-        <p>{ currentBeer.style }</p>
+        <p>{ beerStyles[currentBeer.style] }</p>
         <h4>{ currentBeer.brewer}</h4>
       </div>
     );

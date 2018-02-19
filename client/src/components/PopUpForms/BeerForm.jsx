@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { beerStyles } from '../../utilities';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -18,7 +19,7 @@ export default class TapMenu extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.actionType == "Edit") {
       let { id, name, brewer, style} = nextProps.currentBeer;
-      this.setState({ beerId: id, beerName: name, breweryName: brewer, beerStyle: style })
+      this.setState({ beerId: id, beerName: name, breweryName: brewer, beerStyle: beerStyles[style] })
     }
   }
 
@@ -105,7 +106,7 @@ export default class TapMenu extends Component {
           floatingLabelText="Type of beer"
           searchText={ this.state.beerStyle }
           onUpdateInput={ this.handleTypeInput }
-          dataSource={ beerStyles }
+          dataSource={ beerStylesData }
           filter={ AutoComplete.caseInsensitiveFilter }
           openOnFocus={ true }
         />
@@ -124,7 +125,7 @@ export default class TapMenu extends Component {
 }
 
 
-const beerStyles = [
+const beerStylesData = [
   'Amber Ale',
   'Amber Lager',
   'Bock',
