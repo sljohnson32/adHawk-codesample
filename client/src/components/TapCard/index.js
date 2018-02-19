@@ -20,11 +20,11 @@ export default class TapCard extends Component {
 
   render() {
 
-    let { id, name, beersData, tapHistory, allBreweries } = this.props;
+    let { id, name, beersData, allTapHistory, allBreweries } = this.props;
 
-    let currentBeer = beersData.filter(beer => {
-      return beer.tap_id == id && beer.on_tap;
-    })
+    let currentBeer = beersData.filter(beer => beer.tap_id == id && beer.on_tap);
+
+    let tapHistory = allTapHistory.filter(beer => beer.tap_id == id);
 
     return (
       <Card

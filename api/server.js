@@ -59,7 +59,9 @@ app.get('/api/beers', function (req, res) {
 })
 
 app.post('/api/beers', function (req, res) {
-  return Beer.create(req.body)
+  let body = req.body;
+  body.start_date = Date.now()
+  return Beer.create(body)
     .then(tap => {
       res.status(200).json(tap)
     })
