@@ -66,10 +66,12 @@ export default class TapMenu extends Component {
             onClick={ () => this.toggleBeerForm() }
           />
           <MenuItem
+            disabled={ currentBeerId == "" }
             primaryText="Edit Beer"
             onClick={ () => this.toggleBeerForm("Edit") }
           />
           <MenuItem
+            disabled={ currentBeerId == "" }
             primaryText="Retire Beer"
             onClick={ () => this.deleteBeer(currentBeerId) }
           />

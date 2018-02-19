@@ -17,14 +17,14 @@ export default class TapMenu extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.actionType == "Edit") {
-      let { id, name, brewer, style} = this.props.currentBeer;
+      let { id, name, brewer, style} = nextProps.currentBeer;
       this.setState({ beerId: id, beerName: name, breweryName: brewer, beerStyle: style })
     }
   }
 
 
   handleClose = () => {
-    this.setState({ open: false, beerId: "", beerName: "", breweryName: "", searchText: "" }, () => this.props.handleClose());
+    this.setState({ open: false, beerId: "", beerName: "", breweryName: "", beerStyle: "" }, () => this.props.handleClose());
   };
 
   //handleInput
@@ -59,8 +59,10 @@ export default class TapMenu extends Component {
     }
     if (actionType == "Edit") {
       this.props.editBeer(beerId, beerData);
-    } else this.props.addBeer(beerData)
-    this.props.handleClose();
+    } else {
+      this.props.addBeer(beerData)
+    }
+    this.handleClose();
   }
 
   render() {
