@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TapMenu from '../../containers/TapMenu-container';
+import TapHistory from '../TapHistory';
 import { BeerCard } from '../BeerCard';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -9,18 +10,17 @@ export default class TapCard extends Component {
   constructor() {
     super();
     this.state = {
-      expanded: false,
-    };
-    this.toggleExpanded = this.toggleExpanded.bind(this);
+      open: false
+    }
   }
 
-  toggleExpanded = () => {
-    this.setState({ expanded: !this.state.expanded });
+  toggleHistory = () => {
+    this.setState({ open: !this.state.open });
   };
 
   render() {
 
-    let { id, name, beersData, allBreweries } = this.props;
+    let { id, name, beersData, tapHistory, allBreweries } = this.props;
 
     let currentBeer = beersData.filter(beer => {
       return beer.tap_id == id && beer.on_tap;
@@ -28,7 +28,6 @@ export default class TapCard extends Component {
 
     return (
       <Card
-        expanded={ this.state.expanded }
         style={ styles.card }
       >
         <CardTitle
@@ -46,18 +45,17 @@ export default class TapCard extends Component {
             currentBeer={ currentBeer[0] }
           />
         </CardText>
-        <CardTitle
-          title="Tap History"
-          expandable={true}
-        />
-        <CardText
-          expandable={true}>
-          This will be a table of all previous beers!
-        </CardText>
         <CardActions>
           <FlatButton
-            label={ this.state.expanded ? "Close History" : "See History" } onClick={this.toggleExpanded} />
+            label="See History"
+            onClick={this.toggleHistory}
+          />
         </CardActions>
+        <TapHistory
+          open={ this.state.open }
+          tapHistory={ tapHistory }
+          handleClose={ this.toggleHistory }
+        />
       </Card>
     );
   }
