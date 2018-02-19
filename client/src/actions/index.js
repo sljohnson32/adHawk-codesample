@@ -32,6 +32,7 @@ const addTap = (newTap) => {
 }
 
 export const postTap = (tapData) => {
+  console.log(tapData)
   return dispatch => {
     post('taps', tapData)
       .then(response => {
