@@ -37,7 +37,9 @@ export default class TapsHeader extends Component {
         </FloatingActionButton>
         <TapForm
           open={ this.state.open }
-          addTap={  this.props.addTap }
+          tapAction={  this.props.addTap }
+          tapId={ null }
+          tapName={ null }
           handleClose={ this.handleClose }
         />
       </div>

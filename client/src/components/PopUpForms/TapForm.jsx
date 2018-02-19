@@ -22,13 +22,23 @@ export default class TapForm extends Component {
   };
 
   //add tap
-  addTap = () => {
+  handleTapAction = () => {
     let { tapName } = this.state;
-    let newTap = {
+    let tap = {
       name: tapName
     }
-    this.props.addTap(newTap);
+    if (this.props.actionType == "Add") {
+      this.props.tapAction(tap);
+    } else {
+      this.props.tapAction(this.props.tapId, tap)
+    }
     this.handleClose();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.tapName !== null) {
+      this.setState({ tapName: nextProps.tapName })
+    }
   }
 
   render () {
@@ -42,7 +52,7 @@ export default class TapForm extends Component {
       <RaisedButton
         label="Add Tap"
         primary={ true }
-        onClick={ this.addTap }
+        onClick={ this.handleTapAction }
       />
     ];
 

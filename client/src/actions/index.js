@@ -70,8 +70,9 @@ const editTap = (tapData) => {
 
 export const putTap = (id, body) => {
   return dispatch => {
-    put(`taps/${id}`, body)
+    put('taps', id, body)
       .then(response => {
+        console.log(response)
         return dispatch(editTap(response))
       })
   }

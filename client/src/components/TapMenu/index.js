@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import AddBeer from '../AddBeer';
+import TapForm from '../PopUpForms/TapForm';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -19,7 +19,8 @@ export default class TapMenu extends Component {
     breweryName: "",
     beerStyle: "",
     date: null,
-    open: false
+    open: false,
+    tapFormOpen: false
   };
 
   //handle open/close dialog
@@ -30,6 +31,10 @@ export default class TapMenu extends Component {
   handleClose = () => {
     this.setState({ open: false, beerName: "", breweryName: "", searchText: "", date: null, });
   };
+
+  toggleTapForm = () => {
+    this.setState({ tapFormOpen: !this.state.tapFormOpen });
+  }
 
   //handleInput
   handleChange = (event) => {
@@ -72,10 +77,8 @@ export default class TapMenu extends Component {
   }
 
   //editTap
-  editTap(tapId) {
-    console.log("Editing", tapId)
-    //need to pull in the Tap Dialog component and display w/ name data and then have button PUT instead of post
-    this.handleClose();
+  editTap() {
+    this.toggleTapForm()
   }
 
   //deleteTap
@@ -111,6 +114,8 @@ export default class TapMenu extends Component {
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
           <MenuItem
+            id="beer"
+            name="beer"
             primaryText="Add Beer"
             onClick={ this.handleOpen }
             />
@@ -167,6 +172,13 @@ export default class TapMenu extends Component {
             onChange={this.handleDateChange}
           />
         </Dialog>
+        <TapForm
+          open={ this.state.tapFormOpen }
+          tapAction={  this.props.editTap }
+          tapId={ tapId }
+          tapName={ tapName }
+          handleClose={ this.toggleTapForm }
+        />
       </div>
     );
   }

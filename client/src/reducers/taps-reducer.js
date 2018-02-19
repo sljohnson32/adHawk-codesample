@@ -7,6 +7,13 @@ const tapsData = (state = [], action) => {
     case 'ADD_TAP':
       return [...state, action.newTap];
 
+    case 'EDIT_TAP':
+      return state.map(tap => {
+        if (tap.id == action.tapData.id) {
+          return action.tapData;
+        } else return tap;
+      });
+
     case 'DELETE_TAP':
       return state.filter(tap => tap.id !== action.tapId)
 
