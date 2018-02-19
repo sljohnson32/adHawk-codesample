@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import moment from 'moment';
 import { beerStyles } from '../../utilities';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
@@ -12,7 +13,7 @@ export default class TapHistory extends Component {
         <TableRowColumn>{ beer.name }</TableRowColumn>
         <TableRowColumn>{ beer.brewer }</TableRowColumn>
         <TableRowColumn>{ beerStyles[beer.style] }</TableRowColumn>
-        <TableRowColumn>{ beer.start_date }</TableRowColumn>
+        <TableRowColumn>{ moment(beer.start_date).format("dddd, MMMM Do YYYY") }</TableRowColumn>
       </TableRow>
     )
   }
