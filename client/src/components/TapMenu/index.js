@@ -71,9 +71,22 @@ export default class TapMenu extends Component {
     this.handleClose();
   }
 
+  //editTap
+  editTap(tapId) {
+    console.log("Editing", tapId)
+    //need to pull in the Tap Dialog component and display w/ name data and then have button PUT instead of post
+    this.handleClose();
+  }
+
+  //deleteTap
+  deleteTap(tapId) {
+    this.props.deleteTap(tapId);
+    this.handleClose();
+  }
+
   render() {
 
-    let { tapId, allBreweries, addBeer, currentBeerId } = this.props
+    let { tapId, tapName, allBreweries, currentBeerId } = this.props
 
     const actions = [
       <FlatButton
@@ -102,8 +115,14 @@ export default class TapMenu extends Component {
             onClick={ this.handleOpen }
             />
           <Divider />
-          <MenuItem primaryText="Edit Tap" />
-          <MenuItem primaryText="Delete Tap" />
+          <MenuItem
+            primaryText="Edit Tap"
+            onClick={ () => this.editTap(tapId) }
+          />
+          <MenuItem
+            primaryText="Delete Tap"
+            onClick={ () => this.deleteTap(tapId) }
+          />
         </IconMenu>
         <Dialog
           actions={ actions }

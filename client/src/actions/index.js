@@ -85,11 +85,11 @@ export const removeTap = (tapId) => {
   }
 }
 
-export const deleteTap = (id) => {
+export const deleteTap = (tapId) => {
   return dispatch => {
-    del(`taps/${id}`)
+    del(`taps`, tapId)
       .then(response => {
-        return dispatch(removeTap(response))
+        return dispatch(removeTap(tapId))
       })
   }
 }

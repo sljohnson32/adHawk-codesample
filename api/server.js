@@ -45,9 +45,9 @@ app.put('/api/taps/:tap_id', function (req, res) {
 app.delete('/api/taps/:tap_id', function (req, res) {
   const id = req.params.tap_id
 
-  return Tap.destroy({ where: { id }})
+  return Tap.destroy({ where: { id } })
     .then(() => {
-      res.status(204).json({ message: 'Successfully deleted' })
+      res.status(202).json({ id })
     })
 })
 
@@ -80,7 +80,7 @@ app.delete('/api/beers/:beer_id', function (req, res) {
 
   return Beer.destroy({ where: { id }})
     .then(() => {
-      res.status(204).json({ message: 'Successfully deleted' })
+      res.status(204)
     })
 })
 

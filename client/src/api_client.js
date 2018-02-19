@@ -5,7 +5,7 @@ const headers = {
 
 function handleResponse(response) {
   if (response.ok) {
-    return response.json()
+    return response.json();
   }
 
   return response.text().then(text => {
@@ -36,9 +36,8 @@ export function put(path, id, data) {
   }).then(handleResponse)
 }
 
-export function del(path, data) {
-  return fetch(`${host}/api/${path}`, {
-    method: 'delete',
-    body: {},
+export function del(path, id) {
+  return fetch(`${host}/api/${path}/${id}`, {
+    method: 'delete'
   }).then(handleResponse)
 }

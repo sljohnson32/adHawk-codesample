@@ -5,7 +5,11 @@ const tapsData = (state = [], action) => {
       return action.allData.taps;
 
     case 'ADD_TAP':
-      return [state, ...action.newTap];
+      return [...state, ...action.newTap];
+
+    case 'DELETE_TAP':
+      console.log(state)
+      return state.filter(tap => tap.id !== action.tapId)
 
     default:
       return state;
