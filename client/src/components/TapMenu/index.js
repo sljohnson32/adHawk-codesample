@@ -11,33 +11,37 @@ import Divider from 'material-ui/Divider';
 export default class TapMenu extends Component {
 
   state = {
+    actionType: "",
     beerFormOpen: false,
     tapFormOpen: false
   };
 
   //handle open/close dialog
-  toggleBeerForm = () => {
-    this.setState({ beerFormOpen: !this.state.beerFormOpen  });
+  toggleBeerForm = (type) => {
+    if (type == "Edit") {
+      this.setState({ beerFormOpen: !this.state.beerFormOpen, actionType: "Edit" })
+    } else this.setState({ beerFormOpen: !this.state.beerFormOpen, actionType: "" });
   };
 
   toggleTapForm = () => {
     this.setState({ tapFormOpen: !this.state.tapFormOpen });
   }
 
-  //editTap
-  editTap() {
-    this.toggleTapForm()
-  }
-
   //deleteTap
   deleteTap(tapId) {
     this.props.deleteTap(tapId);
-    this.handleClose();
+  }
+
+  //retireBeer
+  deleteBeer(beerId) {
+    this.props.deleteBeer(beerId);
   }
 
   render() {
 
-    let { tapId, tapName, allBreweries, currentBeerId, addBeer } = this.props
+    let { tapId, tapName, allBreweries, currentBeer, addBeer, editBeer } = this.props
+
+    let currentBeerId = currentBeer ? currentBeer.id : '';
 
     return (
       <div>
@@ -49,32 +53,42 @@ export default class TapMenu extends Component {
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
           <MenuItem
-            primaryText="Add Beer"
-            onClick={ this.toggleBeerForm }
-            />
-          <Divider />
-          <MenuItem
             primaryText="Edit Tap"
-            onClick={ () => this.editTap(tapId) }
+            onClick={ this.toggleTapForm }
           />
           <MenuItem
             primaryText="Delete Tap"
             onClick={ () => this.deleteTap(tapId) }
           />
+          <Divider />
+          <MenuItem
+            primaryText="Add Beer"
+            onClick={ () => this.toggleBeerForm() }
+          />
+          <MenuItem
+            primaryText="Edit Beer"
+            onClick={ () => this.toggleBeerForm("Edit") }
+          />
+          <MenuItem
+            primaryText="Retire Beer"
+            onClick={ () => this.deleteBeer(currentBeerId) }
+          />
         </IconMenu>
         <BeerForm
           open={ this.state.beerFormOpen }
-          handleClose={ this.toggleBeerForm }
-          addBeer={ addBeer }
           tapId={ tapId }
           allBreweries={ allBreweries }
-          currentBeerId={ currentBeerId }
+          currentBeer={ currentBeer }
+          actionType={ this.state.actionType }
+          addBeer={ addBeer }
+          editBeer={ editBeer }
+          handleClose={ this.toggleBeerForm }
         />
         <TapForm
           open={ this.state.tapFormOpen }
-          tapAction={  this.props.editTap }
           tapId={ tapId }
           tapName={ tapName }
+          tapAction={  this.props.editTap }
           handleClose={ this.toggleTapForm }
         />
       </div>

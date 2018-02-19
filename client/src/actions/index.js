@@ -1,6 +1,6 @@
 import { get, post, put, del } from '../api_client'
 
-//GET TAPS
+//GET INITIAL DATA
 const receiveAll = (allData) => {
   return {
     type: 'RECEIVE_ALL_DATA',
@@ -32,7 +32,6 @@ const addTap = (newTap) => {
 }
 
 export const postTap = (tapData) => {
-  console.log(tapData)
   return dispatch => {
     post('taps', tapData)
       .then(response => {
@@ -79,6 +78,24 @@ export const putTap = (id, body) => {
   }
 }
 
+//PUT BEER
+const editBeer = (beerData) => {
+  return {
+    type: 'EDIT_BEER',
+    beerData
+  }
+}
+
+export const putBeer = (id, body) => {
+  return dispatch => {
+    put('beers', id, body)
+      .then(response => {
+        console.log(response)
+        return dispatch(editBeer(response))
+      })
+  }
+}
+
 //DELETE TAP
 export const removeTap = (tapId) => {
   return {
@@ -92,6 +109,24 @@ export const deleteTap = (tapId) => {
     del(`taps`, tapId)
       .then(response => {
         return dispatch(removeTap(tapId))
+      })
+  }
+}
+
+//DELETE BEER
+export const removeBeer = (beerId) => {
+  return {
+    type: 'DELETE_BEER',
+    beerId
+  }
+}
+
+export const deleteBeer = (beerId) => {
+  return dispatch => {
+    del(`beers`, beerId)
+      .then(response => {
+        console.log(response)
+        return dispatch(removeBeer(beerId))
       })
   }
 }

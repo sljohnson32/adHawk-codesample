@@ -9,15 +9,22 @@ import DatePicker from 'material-ui/DatePicker';
 export default class TapMenu extends Component {
 
   state = {
+    beerId: "",
     beerName: "",
     breweryName: "",
-    beerStyle: "",
-    date: null
+    beerStyle: ""
   };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.actionType == "Edit") {
+      let { id, name, brewer, style} = this.props.currentBeer;
+      this.setState({ beerId: id, beerName: name, breweryName: brewer, beerStyle: style })
+    }
+  }
 
 
   handleClose = () => {
-    this.setState({ open: false, beerName: "", breweryName: "", searchText: "", date: null, }, () => this.props.handleClose());
+    this.setState({ open: false, beerId: "", beerName: "", breweryName: "", searchText: "" }, () => this.props.handleClose());
   };
 
   //handleInput
@@ -25,11 +32,6 @@ export default class TapMenu extends Component {
     this.setState({
       [event.target.id]: event.target.value
     });
-  };
-
-  //handleDateChangehandleChange = (event, date) => {
-  handleDateChange = (event, date) => {
-    this.setState({ date: date });
   };
 
   //autocomplete
@@ -46,34 +48,35 @@ export default class TapMenu extends Component {
   };
 
   //add beer
-  addBeer(tapId, currentBeerId) {
-    let { beerName, breweryName, beerStyle, date } = this.state;
-    let newBeer = {
+  handleBeerForm(tapId, actionType) {
+    let { beerId, beerName, breweryName, beerStyle, date } = this.state;
+    let beerData = {
       tap_id: tapId,
       name: beerName,
       brewer: breweryName,
       style: formatStyle(beerStyle),
-      start_date: date,
       on_tap: true
     }
-    this.props.addBeer(newBeer, currentBeerId);
+    if (actionType == "Edit") {
+      this.props.editBeer(beerId, beerData);
+    } else this.props.addBeer(beerData)
     this.props.handleClose();
   }
 
   render() {
 
-    let { tapId, allBreweries, currentBeerId } = this.props;
+    let { tapId, allBreweries, currentBeer, actionType } = this.props;
 
     const actions = [
       <FlatButton
-      label="Cancel"
-      secondary={ true }
-      onClick={ this.handleClose }
+        label="Cancel"
+        secondary={ true }
+        onClick={ this.handleClose }
       />,
       <RaisedButton
-      label="Add Beer"
-      primary={ true }
-      onClick={ () => this.addBeer(tapId, currentBeerId) }
+        label={ actionType == "Edit" ? "Edit Beer" : "Add Beer" }
+        primary={ true }
+        onClick={ () => this.handleBeerForm(tapId, actionType) }
       />
     ];
 
@@ -112,13 +115,6 @@ export default class TapMenu extends Component {
           openOnFocus={ true }
           filter={ AutoComplete.caseInsensitiveFilter }
           dataSource={ allBreweries }
-        />
-        <DatePicker
-          floatingLabelText="Start Date"
-          hintText="Start Date"
-          mode="landscape"
-          value={this.state.date}
-          onChange={this.handleDateChange}
         />
       </Dialog>
     );

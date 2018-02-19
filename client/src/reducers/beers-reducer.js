@@ -15,6 +15,20 @@ const beersData = (state = [], action) => {
       newState.push(newBeer);
       return newState;
 
+      case 'EDIT_BEER':
+        return state.map(beer => {
+          if (beer.id == action.beerData.id) {
+            return action.beerData;
+          } else return beer;
+        });
+
+      case 'DELETE_BEER':
+        return state.map(beer => {
+          if (beer.id == action.beerId) {
+            beer.on_tap = false;
+          };
+          return beer
+        });
 
     default:
       return state;

@@ -80,7 +80,7 @@ app.delete('/api/beers/:beer_id', function (req, res) {
 
   return Beer.destroy({ where: { id }})
     .then(() => {
-      res.status(204)
+      res.status(202).json(`Beer with id: ${id} was retired deleted`)
     })
 })
 

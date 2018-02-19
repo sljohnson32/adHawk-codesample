@@ -38,7 +38,7 @@ export default class TapCard extends Component {
             tapId={ id }
             tapName={name}
             allBreweries={ allBreweries }
-            currentBeerId={ currentBeer[0] && currentBeer[0].id }
+            currentBeer={ currentBeer[0] && currentBeer[0] }
           />
         </CardTitle>
         <CardText>
