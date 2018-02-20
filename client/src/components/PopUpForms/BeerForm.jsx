@@ -68,6 +68,7 @@ export default class TapMenu extends Component {
 
   render() {
 
+    let { beerName, breweryName, beerStyle } = this.state
     let { tapId, allBreweries, currentBeer, actionType } = this.props;
 
     const actions = [
@@ -77,6 +78,7 @@ export default class TapMenu extends Component {
         onClick={ this.handleClose }
       />,
       <RaisedButton
+        disabled={ beerName == "" || breweryName == "" }
         label={ actionType == "Edit" ? "Edit Beer" : "Add Beer" }
         primary={ true }
         onClick={ () => this.handleBeerForm(tapId, actionType) }
