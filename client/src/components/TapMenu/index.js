@@ -52,15 +52,7 @@ export default class TapMenu extends Component {
           targetOrigin={{horizontal: 'left', vertical: 'top'}}
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
-          <MenuItem
-            primaryText="Edit Tap"
-            onClick={ this.toggleTapForm }
-          />
-          <MenuItem
-            primaryText="Delete Tap"
-            onClick={ () => this.deleteTap(tapId) }
-          />
-          <Divider />
+
           <MenuItem
             primaryText="Add Beer"
             onClick={ () => this.toggleBeerForm() }
@@ -75,6 +67,16 @@ export default class TapMenu extends Component {
             primaryText="Retire Beer"
             onClick={ () => this.deleteBeer(currentBeerId) }
           />
+          <Divider />
+          <MenuItem
+            primaryText="Edit Tap"
+            onClick={ this.toggleTapForm }
+          />
+          <MenuItem
+            primaryText="Delete Tap"
+            onClick={ () => this.deleteTap(tapId) }
+          />
+          
         </IconMenu>
         <BeerForm
           open={ this.state.beerFormOpen }
