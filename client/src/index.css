@@ -14,3 +14,7 @@ body {
   padding: 20px;
   color: white;
 }
+
+.table-header h3 {
+  width: 100%
+}

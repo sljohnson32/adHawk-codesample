@@ -3,7 +3,8 @@ import { Route } from 'react-router-dom';
 import Header from '../Header'
 import CurrentTaps from '../../containers/CurrentTaps-container'
 import UploadPage from '../UploadPage'
-import './App.css';
+import '../../index.css';
+import '../../reset.css';
 
 class App extends Component {
 

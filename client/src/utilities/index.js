@@ -55,7 +55,11 @@ export const sortTapData = data => {
 export const calcAvePrice = data => {
   return data.map(tap => {
     let average = tap.glassPrice / tap.kegs;
-    tap.aveGlassPrice = average.toFixed(2);
+    tap.aveGlassPrice = formatDollars(average);
     return tap
   })
+}
+
+export const formatDollars = num => {
+  return num.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
 }
