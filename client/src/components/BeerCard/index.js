@@ -7,7 +7,7 @@ export const BeerCard = (props) => {
   if (currentBeer) {
     return (
       <div style={ styles.beerCard }>
-        <h2>Beer On Top</h2>
+        <h2>Beer On Tap</h2>
         <h3>{ currentBeer.name }</h3>
         <h4>{ beerStyles[currentBeer.style] }</h4>
         <h4>{ currentBeer.brewer}</h4>
