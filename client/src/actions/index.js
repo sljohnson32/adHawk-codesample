@@ -122,10 +122,10 @@ export const removeBeer = (beerId) => {
 }
 
 export const deleteBeer = (beerId) => {
+  let body = { on_tap: false, end_date: Date.now() }
   return dispatch => {
-    del(`beers`, beerId)
+    put(`beers`, beerId, body)
       .then(response => {
-        console.log(response)
         return dispatch(removeBeer(beerId))
       })
   }
