@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TapMenu from '../../containers/TapMenu-container';
+import AppBar from 'material-ui/AppBar';
 import TapHistory from '../TapHistory';
 import { BeerCard } from '../BeerCard';
 import { sortHistory } from '../../utilities';
@@ -32,13 +33,19 @@ export default class TapCard extends Component {
         style={ styles.card }
       >
         <CardTitle
-          title={ name }
+          style={ styles.header }
         >
-          <TapMenu
-            tapId={ id }
-            tapName={ name }
-            allBreweries={ allBreweries }
-            currentBeer={ currentBeer[0] && currentBeer[0] }
+          <AppBar
+            title={ name }
+            iconStyleLeft={ styles.leftIcon }
+            iconElementRight={
+              <TapMenu
+                tapId={ id }
+                tapName={ name }
+                allBreweries={ allBreweries }
+                currentBeer={ currentBeer[0] && currentBeer[0] }
+              />
+            }
           />
         </CardTitle>
         <CardText>
@@ -48,7 +55,7 @@ export default class TapCard extends Component {
         </CardText>
         <CardActions>
           <FlatButton
-            label="See History"
+            label="Tap History"
             onClick={this.toggleHistory}
           />
         </CardActions>
@@ -64,6 +71,13 @@ export default class TapCard extends Component {
 
 const styles = {
   card: {
-    width: "300px"
+    width: "280px",
+    margin: "5px"
+  },
+  header: {
+    padding: "0"
+  },
+  leftIcon: {
+    visibility: "hidden"
   }
 }

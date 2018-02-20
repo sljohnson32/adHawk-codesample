@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import TapForm from '../../containers/TapForm-container'
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import TapForm from '../../containers/TapForm-container';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -13,7 +11,6 @@ export default class TapsHeader extends Component {
     open: false
   };
 
-  //handle open/close dialog
   handleOpen = () => {
     this.setState({ open: true });
   };
@@ -25,14 +22,14 @@ export default class TapsHeader extends Component {
   render () {
 
     return (
-      <div>
-        <h3>Current Taps</h3>
-        <FloatingActionButton
-          mini={ true }
+      <div style={ styles.container }>
+        <h3 style={ styles.header }>Current Taps</h3>
+        <RaisedButton
+          label="Add Tap"
+          style={ styles.tapButton }
+          primary={ true }
           onClick={ this.handleOpen }
-        >
-          <ContentAdd />
-        </FloatingActionButton>
+        />
         <TapForm
           open={ this.state.open }
           actionType="Add"
@@ -43,5 +40,19 @@ export default class TapsHeader extends Component {
         />
       </div>
     );
+  }
+}
+
+const styles = {
+  container: {
+    padding: "10px",
+  },
+  header: {
+    display: "inline-block",
+    fontSize: "30px",
+    paddingTop: "5px"
+  },
+  tapButton: {
+    marginLeft: "20px"
   }
 }

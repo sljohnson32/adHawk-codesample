@@ -50,7 +50,9 @@ export default class TapMenu extends Component {
       <div>
         <IconMenu
           iconButtonElement={
-            <IconButton><MoreVertIcon /></IconButton>
+            <IconButton>
+              <MoreVertIcon color="white"/>
+            </IconButton>
           }
           targetOrigin={{horizontal: 'left', vertical: 'top'}}
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}

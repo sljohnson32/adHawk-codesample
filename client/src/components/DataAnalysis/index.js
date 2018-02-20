@@ -41,17 +41,18 @@ export default class DataAnalysis extends Component {
         <RaisedButton
           label="Reset Data"
           primary={ true }
+          style={{ margin: "20px 0" }}
           onClick={ resetData }
         />
         <div style={ styles.displayBox }>
           <Paper
-            style={ styles.flexItems }
+            style={ styles.leftSide }
             zDepth={ 1 }
           >
-            <Paper zDepth={ 2 }>
+            <Paper style={ styles.paper } zDepth={ 2 }>
               <TopBeerCard beer={ beersData[0] } />
             </Paper>
-            <h3>Ave Glass Price by Tap</h3>
+            <h3 style={{ marginTop: "25px" }}>Ave Glass Price by Tap</h3>
             <Table
               style={ styles.table }
               maxHeight={ "300px" }
@@ -75,10 +76,10 @@ export default class DataAnalysis extends Component {
             </Table>
           </Paper>
           <Paper
-            style={ styles.flexItems }
+            style={ styles.rightSide }
             zDepth={ 2 }
           >
-            <h3>List of Beers</h3>
+            <h3 style={{ marginTop: "20px" }}>List of Beers</h3>
             <Table
               style={ styles.table }
               maxHeight={ "300px" }
@@ -120,11 +121,18 @@ const styles = {
     flexDirection: "columns",
     margin: "10px 5%"
   },
-  flexItems: {
+  leftSide: {
     marginRight: "10px",
-    width: "45%"
+    width: "40%"
+  },
+  rightSide: {
+    marginRight: "10px",
+    width: "60%"
   },
   table: {
     textAlign: "center"
+  },
+  paper: {
+    margin: "10px"
   }
 };

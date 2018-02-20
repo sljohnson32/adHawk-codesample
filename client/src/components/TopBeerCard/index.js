@@ -8,7 +8,7 @@ export const TopBeerCard = (props) => {
     <div style={ styles.beerCard }>
       <h2>Top Selling Beer</h2>
       <h3>{ beer.name }</h3>
-      <p>Style: { beer.style }</p>
+      <h4>Style: { beer.style }</h4>
       <h4>Brewer: { beer.brewer}</h4>
       <h4>Total Keg Cost: $ { formatDollars(beer.kegPrice) }</h4>
     </div>
@@ -17,8 +17,7 @@ export const TopBeerCard = (props) => {
 
 const styles = {
   beerCard: {
-    // height: "150px",
     marginBottom: "10px",
-    padding: "10px"
+    padding: "20px 0 10px 0"
   }
 }
