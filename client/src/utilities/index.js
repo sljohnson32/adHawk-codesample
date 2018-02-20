@@ -39,3 +39,23 @@ export const sortHistory = (history, order) => {
     })
   }
 };
+
+export const sortBeerData = data => {
+  return data.sort((a, b) => {
+    return b.kegPrice - a.kegPrice;
+  })
+};
+
+export const sortTapData = data => {
+  return data.sort((a, b) => {
+    return b.aveGlassPrice - a.aveGlassPrice;
+  })
+};
+
+export const calcAvePrice = data => {
+  return data.map(tap => {
+    let average = tap.glassPrice / tap.kegs;
+    tap.aveGlassPrice = average.toFixed(2);
+    return tap
+  })
+}

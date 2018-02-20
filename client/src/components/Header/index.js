@@ -3,21 +3,6 @@ import { withRouter } from 'react-router-dom'
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 
-function handleTitleClick() {
-  console.log(window);
-}
-
-const styles = {
-  title: {
-    cursor: 'pointer',
-    paddingLeft: '125px'
-  },
-  button: {
-    width: '125px'
-  }
-};
-
-
 class Header extends Component {
 
   constructor() {
@@ -63,5 +48,15 @@ class Header extends Component {
     );
   }
 }
+
+const styles = {
+  title: {
+    cursor: 'pointer',
+    paddingLeft: '125px'
+  },
+  button: {
+    width: '125px'
+  }
+};
 
 export default withRouter(Header);
