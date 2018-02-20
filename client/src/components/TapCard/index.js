@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TapMenu from '../../containers/TapMenu-container';
 import TapHistory from '../TapHistory';
 import { BeerCard } from '../BeerCard';
+import { sortHistory } from '../../utilities';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -24,7 +25,7 @@ export default class TapCard extends Component {
 
     let currentBeer = beersData.filter(beer => beer.tap_id == id && beer.on_tap);
 
-    let tapHistory = allTapHistory.filter(beer => beer.tap_id == id);
+    let tapHistory = sortHistory(allTapHistory.filter(beer => beer.tap_id == id), "recent");
 
     return (
       <Card
@@ -35,7 +36,7 @@ export default class TapCard extends Component {
         >
           <TapMenu
             tapId={ id }
-            tapName={name}
+            tapName={ name }
             allBreweries={ allBreweries }
             currentBeer={ currentBeer[0] && currentBeer[0] }
           />

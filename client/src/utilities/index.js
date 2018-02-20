@@ -6,8 +6,8 @@ export const filterBrewers = brewers => {
       filteredList.push(brewers[i]);
     };
   };
-  return filteredList.sort()
-}
+  return filteredList.sort();
+};
 
 export const beerStyles = {
   AMBER_ALE: 'Amber Ale',
@@ -26,4 +26,16 @@ export const beerStyles = {
   STRONG_ALE: 'Strong Ale',
   WHEAT_BEER: 'Wheat Beer',
   OTHER: 'Other'
-}
+};
+
+export const sortHistory = (history, order) => {
+  if (order == 'recent') {
+    return history.sort((a, b) => {
+      return new Date(b.start_date) - new Date(a.start_date);
+    })
+  } else {
+    return history.sort((a, b) => {
+      return new Date(a.start_date) - new Date(b.start_date);
+    })
+  }
+};

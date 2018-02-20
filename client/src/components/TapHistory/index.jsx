@@ -13,7 +13,9 @@ export default class TapHistory extends Component {
         <TableRowColumn>{ beer.name }</TableRowColumn>
         <TableRowColumn>{ beer.brewer }</TableRowColumn>
         <TableRowColumn>{ beerStyles[beer.style] }</TableRowColumn>
-        <TableRowColumn>{ moment(beer.start_date).format("dddd, MMMM Do YYYY") }</TableRowColumn>
+        <TableRowColumn>
+          { moment(beer.start_date).format("MMM Do, YYYY") }
+        </TableRowColumn>
       </TableRow>
     )
   }
