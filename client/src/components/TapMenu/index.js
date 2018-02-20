@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BeerForm from '../PopUpForms/BeerForm';
-import TapForm from '../PopUpForms/TapForm';
+import TapForm from '../../containers/TapForm-container';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -10,11 +10,14 @@ import Divider from 'material-ui/Divider';
 
 export default class TapMenu extends Component {
 
-  state = {
-    actionType: "",
-    beerFormOpen: false,
-    tapFormOpen: false
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      actionType: "",
+      beerFormOpen: false,
+      tapFormOpen: false
+    }
+  }
 
   //handle open/close dialog
   toggleBeerForm = (type) => {
@@ -76,7 +79,7 @@ export default class TapMenu extends Component {
             primaryText="Delete Tap"
             onClick={ () => this.deleteTap(tapId) }
           />
-          
+
         </IconMenu>
         <BeerForm
           open={ this.state.beerFormOpen }

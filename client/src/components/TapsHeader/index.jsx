@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TapForm from '../PopUpForms/TapForm'
+import TapForm from '../../containers/TapForm-container'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Dialog from 'material-ui/Dialog';

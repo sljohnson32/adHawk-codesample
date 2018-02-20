@@ -2,12 +2,6 @@ import { connect } from 'react-redux';
 import TapMenu from '../components/TapMenu';
 import { postBeer, putBeer, deleteBeer, putTap, deleteTap } from '../actions';
 
-const mapStateToProps = state => (
-  {
-    allTaps: state.tapsData.map(tap => tap.name)
-  }
-);
-
 const mapDispatchToProps = dispatch => ({
 
   addBeer: (currentId, newBeer) => {
@@ -32,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TapMenu);
+export default connect(null, mapDispatchToProps)(TapMenu);

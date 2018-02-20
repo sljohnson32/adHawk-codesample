@@ -6,9 +6,16 @@ import TextField from 'material-ui/TextField';
 
 export default class TapForm extends Component {
 
-  state = {
-    tapName: ""
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      tapName: "",
+      error: false
+    };
+    this.handleChange = this.handleChange.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+  }
+
 
   handleClose = () => {
     this.setState({ tapName: "" }, () => this.props.handleClose())
@@ -16,19 +23,22 @@ export default class TapForm extends Component {
 
   // //handleInput
   handleChange = (event) => {
-    this.setState({
-      [event.target.id]: event.target.value
-    });
+    let val = event.target.value
+    if (this.props.allTapNames.includes(val) && val !== this.props.tapName) {
+      this.setState({ tapName: val, error: true })
+    } else this.setState({ tapName: val, error: false })
   };
 
   //add tap
   handleTapAction = () => {
-    let { tapName } = this.state;
+    let { tapName, error } = this.state;
     let tap = {
       name: tapName
     }
     if (this.props.actionType == "Add") {
-      this.props.tapAction(tap);
+      if (!error) {
+        this.props.tapAction(tap);
+      }
     } else {
       this.props.tapAction(this.props.tapId, tap)
     }
@@ -51,6 +61,7 @@ export default class TapForm extends Component {
       />,
       <RaisedButton
         label="Add Tap"
+        disabled={ this.state.error || this.state.tapName === "" }
         primary={ true }
         onClick={ this.handleTapAction }
       />
@@ -67,8 +78,9 @@ export default class TapForm extends Component {
       >
         <TextField
           id="tapName"
+          errorText={ this.state.error ? "Please choose a unique tap name" : null }
           floatingLabelText="Name of tap"
-          hintText="Name of tap"
+          hintText="Please use a unique tap name"
           value={ this.state.tapName }
           onChange={ this.handleChange }
         />
