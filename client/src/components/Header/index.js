@@ -6,7 +6,9 @@ import FlatButton from 'material-ui/FlatButton';
 const styles = {
   title: {
     cursor: 'pointer',
-    paddingLeft: '125px'
+    paddingLeft: '125px',
+    fontSize: '34px',
+    fontWeight: 'bold'
   },
   button: {
     width: '125px'
