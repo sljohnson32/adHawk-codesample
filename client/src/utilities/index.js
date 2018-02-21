@@ -29,7 +29,7 @@ export const beerStyles = {
 };
 
 export const sortHistory = (history, order) => {
-  if (order == 'recent') {
+  if (order === 'recent') {
     return history.sort((a, b) => {
       return new Date(b.start_date) - new Date(a.start_date);
     })
@@ -52,14 +52,14 @@ export const sortTapData = data => {
   })
 };
 
+export const formatDollars = num => {
+  return num.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+};
+
 export const calcAvePrice = data => {
   return data.map(tap => {
     let average = tap.glassPrice / tap.kegs;
     tap.aveGlassPrice = formatDollars(average);
     return tap
   })
-}
-
-export const formatDollars = num => {
-  return num.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
-}
+};

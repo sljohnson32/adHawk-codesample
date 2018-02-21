@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { sortBeerData, sortTapData, calcAvePrice } from '../../utilities';
@@ -24,7 +25,6 @@ class UploadPage extends Component {
     let { data } = results;
     let beersData = {};
     let tapsData = {};
-    let num = 0
 
     for (let i = 0; i < data.length; i++) {
       let currentBeer = beersData[data[i].beer];
@@ -83,7 +83,7 @@ class UploadPage extends Component {
   render() {
     return (
       <div>
-        { this.state.beersData.length == 0 ?
+        { this.state.beersData.length === 0 ?
           <form ref={ (el) => this.myFormRef = el } onSubmit={ this.handleSubmit }>
             <input
               accept="text/csv"

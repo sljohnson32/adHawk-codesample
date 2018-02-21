@@ -1,10 +1,36 @@
 import React, { Component} from 'react';
-import moment from 'moment';
 import { TopBeerCard } from '../TopBeerCard';
-import { beerStyles, formatDollars } from '../../utilities';
+import { formatDollars } from '../../utilities';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+
+const styles = {
+  height: 100,
+  width: 100,
+  margin: 20,
+  textAlign: 'center',
+  display: 'inline-block',
+  displayBox: {
+    display: "flex",
+    flexDirection: "columns",
+    margin: "10px 5%"
+  },
+  leftSide: {
+    marginRight: "10px",
+    width: "40%"
+  },
+  rightSide: {
+    marginRight: "10px",
+    width: "60%"
+  },
+  table: {
+    textAlign: "center"
+  },
+  paper: {
+    margin: "10px"
+  }
+};
 
 export default class DataAnalysis extends Component {
 
@@ -59,7 +85,7 @@ export default class DataAnalysis extends Component {
               fixedHeader={ true }
             >
               <TableHeader
-                adjustForCheckbox= { false }
+                adjustForCheckbox={ false }
                 displaySelectAll={ false }
               >
                 <TableRow>
@@ -86,7 +112,7 @@ export default class DataAnalysis extends Component {
               fixedHeader={ true }
             >
               <TableHeader
-                adjustForCheckbox= { false }
+                adjustForCheckbox={ false }
                 displaySelectAll={ false }
               >
                 <TableRow>
@@ -109,30 +135,3 @@ export default class DataAnalysis extends Component {
     );
   }
 }
-
-const styles = {
-  height: 100,
-  width: 100,
-  margin: 20,
-  textAlign: 'center',
-  display: 'inline-block',
-  displayBox: {
-    display: "flex",
-    flexDirection: "columns",
-    margin: "10px 5%"
-  },
-  leftSide: {
-    marginRight: "10px",
-    width: "40%"
-  },
-  rightSide: {
-    marginRight: "10px",
-    width: "60%"
-  },
-  table: {
-    textAlign: "center"
-  },
-  paper: {
-    margin: "10px"
-  }
-};

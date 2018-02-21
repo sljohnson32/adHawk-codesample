@@ -72,7 +72,6 @@ export const putTap = (id, body) => {
   return dispatch => {
     put('taps', id, body)
       .then(response => {
-        console.log(response)
         return dispatch(editTap(response))
       })
   }
@@ -90,7 +89,6 @@ export const putBeer = (id, body) => {
   return dispatch => {
     put('beers', id, body)
       .then(response => {
-        console.log(response)
         return dispatch(editBeer(response))
       })
   }

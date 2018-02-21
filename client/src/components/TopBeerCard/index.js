@@ -1,6 +1,13 @@
 import React from 'react';
 import { formatDollars } from '../../utilities';
 
+const styles = {
+  beerCard: {
+    marginBottom: "10px",
+    padding: "20px 0 10px 0"
+  }
+};
+
 export const TopBeerCard = (props) => {
   let { beer } = props;
 
@@ -13,11 +20,4 @@ export const TopBeerCard = (props) => {
       <h4>Total Keg Cost: $ { formatDollars(beer.kegPrice) }</h4>
     </div>
   );
-}
-
-const styles = {
-  beerCard: {
-    marginBottom: "10px",
-    padding: "20px 0 10px 0"
-  }
-}
+};

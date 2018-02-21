@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import TapForm from '../../containers/TapForm-container';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+
+const styles = {
+  container: {
+    padding: "10px",
+  },
+  header: {
+    display: "inline-block",
+    fontSize: "30px",
+    paddingTop: "5px"
+  },
+  tapButton: {
+    marginLeft: "20px"
+  }
+};
 
 export default class TapsHeader extends Component {
 
@@ -40,19 +51,5 @@ export default class TapsHeader extends Component {
         />
       </div>
     );
-  }
-}
-
-const styles = {
-  container: {
-    padding: "10px",
-  },
-  header: {
-    display: "inline-block",
-    fontSize: "30px",
-    paddingTop: "5px"
-  },
-  tapButton: {
-    marginLeft: "20px"
   }
 }
