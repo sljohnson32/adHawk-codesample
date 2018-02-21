@@ -21,7 +21,7 @@ export default class TapMenu extends Component {
 
   //handle open/close dialog
   toggleBeerForm = (type) => {
-    if (type == "Edit") {
+    if (type === "Edit") {
       this.setState({ beerFormOpen: !this.state.beerFormOpen, actionType: "Edit" })
     } else this.setState({ beerFormOpen: !this.state.beerFormOpen, actionType: "" });
   };
@@ -63,12 +63,12 @@ export default class TapMenu extends Component {
             onClick={ () => this.toggleBeerForm() }
           />
           <MenuItem
-            disabled={ currentBeerId == "" }
+            disabled={ currentBeerId === "" }
             primaryText="Edit Beer"
             onClick={ () => this.toggleBeerForm("Edit") }
           />
           <MenuItem
-            disabled={ currentBeerId == "" }
+            disabled={ currentBeerId === "" }
             primaryText="Retire Beer"
             onClick={ () => this.deleteBeer(currentBeerId) }
           />

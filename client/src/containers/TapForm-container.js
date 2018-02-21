@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import TapForm from '../components/PopUpForms/TapForm';
-import { filterBrewers } from '../utilities';
 
 const mapStateToProps = state => (
   {

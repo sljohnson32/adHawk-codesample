@@ -9,7 +9,7 @@ const tapsData = (state = [], action) => {
 
     case 'EDIT_TAP':
       return state.map(tap => {
-        if (tap.id == action.tapData.id) {
+        if (tap.id === action.tapData.id) {
           return action.tapData;
         } else return tap;
       });

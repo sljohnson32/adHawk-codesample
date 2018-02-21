@@ -3,6 +3,16 @@ import { withRouter } from 'react-router-dom'
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 
+const styles = {
+  title: {
+    cursor: 'pointer',
+    paddingLeft: '125px'
+  },
+  button: {
+    width: '125px'
+  }
+};
+
 class Header extends Component {
 
   constructor() {
@@ -25,7 +35,7 @@ class Header extends Component {
     const { location } = this.props
 
     let linkButton = (
-      location.pathname == "/" ?
+      location.pathname === "/" ?
         <FlatButton
           label="Upload Data"
           onClick={ this.goUpload }
@@ -48,15 +58,5 @@ class Header extends Component {
     );
   }
 }
-
-const styles = {
-  title: {
-    cursor: 'pointer',
-    paddingLeft: '125px'
-  },
-  button: {
-    width: '125px'
-  }
-};
 
 export default withRouter(Header);

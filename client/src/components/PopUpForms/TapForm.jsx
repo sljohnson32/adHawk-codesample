@@ -4,6 +4,12 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
+const styles = {
+  tapDialog: {
+    width: '300px',
+  }
+};
+
 export default class TapForm extends Component {
 
   constructor(props) {
@@ -35,7 +41,7 @@ export default class TapForm extends Component {
     let tap = {
       name: tapName
     }
-    if (this.props.actionType == "Add") {
+    if (this.props.actionType === "Add") {
       if (!error) {
         this.props.tapAction(tap);
       }
@@ -86,11 +92,5 @@ export default class TapForm extends Component {
         />
       </Dialog>
     );
-  }
-}
-
-const styles = {
-  tapDialog: {
-    width: '300px',
   }
 };

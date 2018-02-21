@@ -1,6 +1,13 @@
 import React from 'react';
 import { beerStyles } from '../../utilities';
 
+const styles = {
+  beerCard: {
+    height: "150px",
+    marginTop: "10px"
+  }
+};
+
 export const BeerCard = (props) => {
   let { currentBeer } = props
 
@@ -19,11 +26,4 @@ export const BeerCard = (props) => {
       <h4>No beer on tap.</h4>
     </div>
   )
-}
-
-const styles = {
-  beerCard: {
-    height: "150px",
-    marginTop: "10px"
-  }
-}
+};

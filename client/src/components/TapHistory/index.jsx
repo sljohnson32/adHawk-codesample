@@ -48,7 +48,7 @@ export default class TapHistory extends Component {
           fixedHeader={ true }
         >
           <TableHeader
-            adjustForCheckbox= { false }
+            adjustForCheckbox={ false }
             displaySelectAll={ false }
           >
             <TableRow>
@@ -67,7 +67,7 @@ export default class TapHistory extends Component {
               </TableBody>
           }
         </Table>
-        { tapHistory.length == 0 && <p>No beer history. This must be a new tap!</p> }
+        { tapHistory.length === 0 && <p>No beer history. This must be a new tap!</p> }
       </Dialog>
     );
   }

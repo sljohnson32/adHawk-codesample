@@ -7,7 +7,7 @@ const beersData = (state = [], action) => {
     case 'ADD_BEER':
       let { newBeer } = action;
       let newState = state.map(beer => {
-        if (beer.tap_id == newBeer.tap_id && beer.on_tap) {
+        if (beer.tap_id === newBeer.tap_id && beer.on_tap) {
           beer.on_tap = false;
         };
         return beer;
@@ -17,14 +17,14 @@ const beersData = (state = [], action) => {
 
       case 'EDIT_BEER':
         return state.map(beer => {
-          if (beer.id == action.beerData.id) {
+          if (beer.id === action.beerData.id) {
             return action.beerData;
           } else return beer;
         });
 
       case 'DELETE_BEER':
         return state.map(beer => {
-          if (beer.id == action.beerId) {
+          if (beer.id === action.beerId) {
             beer.on_tap = false;
           };
           return beer

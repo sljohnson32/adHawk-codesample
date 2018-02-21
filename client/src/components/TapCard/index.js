@@ -4,8 +4,21 @@ import AppBar from 'material-ui/AppBar';
 import TapHistory from '../TapHistory';
 import { BeerCard } from '../BeerCard';
 import { sortHistory } from '../../utilities';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+
+const styles = {
+  card: {
+    width: "280px",
+    margin: "5px"
+  },
+  header: {
+    padding: "0"
+  },
+  leftIcon: {
+    visibility: "hidden"
+  }
+};
 
 export default class TapCard extends Component {
 
@@ -24,9 +37,9 @@ export default class TapCard extends Component {
 
     let { id, name, beersData, allTapHistory, allBreweries } = this.props;
 
-    let currentBeer = beersData.filter(beer => beer.tap_id == id && beer.on_tap);
+    let currentBeer = beersData.filter(beer => beer.tap_id === id && beer.on_tap);
 
-    let tapHistory = sortHistory(allTapHistory.filter(beer => beer.tap_id == id), "recent");
+    let tapHistory = sortHistory(allTapHistory.filter(beer => beer.tap_id === id), "recent");
 
     return (
       <Card
@@ -67,17 +80,4 @@ export default class TapCard extends Component {
       </Card>
     );
   }
-}
-
-const styles = {
-  card: {
-    width: "280px",
-    margin: "5px"
-  },
-  header: {
-    padding: "0"
-  },
-  leftIcon: {
-    visibility: "hidden"
-  }
-}
+};

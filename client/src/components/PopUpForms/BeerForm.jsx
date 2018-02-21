@@ -5,7 +5,43 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import AutoComplete from 'material-ui/AutoComplete';
-import DatePicker from 'material-ui/DatePicker';
+
+const beerStylesData = [
+  'Amber Ale',
+  'Amber Lager',
+  'Bock',
+  'Brown Ale',
+  'Dark Lager',
+  'IPA',
+  'Pale Ale',
+  'Pale Lager',
+  'Pilsner',
+  'Porter',
+  'Sour Ale',
+  'Specialty Beer',
+  'Stout',
+  'Strong Ale',
+  'Wheat Beer',
+  'Other'
+];
+
+const contentStyle = {
+  width: '400px',
+};
+
+const titleStyle = {
+  paddingBottom: '10px'
+}
+
+const pStyle = {
+  fontStyle: "italic",
+  margin: "0",
+  paddingBottom: "20px",
+}
+
+const formatStyle = data => {
+  return data.replace(' ', '_').toUpperCase()
+}
 
 export default class TapMenu extends Component {
 
@@ -17,7 +53,7 @@ export default class TapMenu extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.actionType == "Edit") {
+    if (nextProps.actionType === "Edit") {
       let { id, name, brewer, style} = nextProps.currentBeer;
       this.setState({ beerId: id, beerName: name, breweryName: brewer, beerStyle: beerStyles[style] })
     }
@@ -50,7 +86,7 @@ export default class TapMenu extends Component {
 
   //add beer
   handleBeerForm(tapId, actionType) {
-    let { beerId, beerName, breweryName, beerStyle, date } = this.state;
+    let { beerId, beerName, breweryName, beerStyle } = this.state;
     let beerData = {
       tap_id: tapId,
       name: beerName,
@@ -58,7 +94,7 @@ export default class TapMenu extends Component {
       style: formatStyle(beerStyle),
       on_tap: true
     }
-    if (actionType == "Edit") {
+    if (actionType === "Edit") {
       this.props.editBeer(beerId, beerData);
     } else {
       this.props.addBeer(beerData)
@@ -68,8 +104,8 @@ export default class TapMenu extends Component {
 
   render() {
 
-    let { beerName, breweryName, beerStyle } = this.state
-    let { tapId, allBreweries, currentBeer, actionType } = this.props;
+    let { beerName, breweryName } = this.state
+    let { tapId, allBreweries, actionType } = this.props;
 
     const actions = [
       <FlatButton
@@ -78,8 +114,8 @@ export default class TapMenu extends Component {
         onClick={ this.handleClose }
       />,
       <RaisedButton
-        disabled={ beerName == "" || breweryName == "" }
-        label={ actionType == "Edit" ? "Edit Beer" : "Add Beer" }
+        disabled={ beerName === "" || breweryName === "" }
+        label={ actionType === "Edit" ? "Edit Beer" : "Add Beer" }
         primary={ true }
         onClick={ () => this.handleBeerForm(tapId, actionType) }
       />
@@ -124,42 +160,4 @@ export default class TapMenu extends Component {
       </Dialog>
     );
   }
-}
-
-
-const beerStylesData = [
-  'Amber Ale',
-  'Amber Lager',
-  'Bock',
-  'Brown Ale',
-  'Dark Lager',
-  'IPA',
-  'Pale Ale',
-  'Pale Lager',
-  'Pilsner',
-  'Porter',
-  'Sour Ale',
-  'Specialty Beer',
-  'Stout',
-  'Strong Ale',
-  'Wheat Beer',
-  'Other'
-];
-
-const contentStyle = {
-  width: '400px',
-};
-
-const titleStyle = {
-  paddingBottom: '10px'
-}
-
-const pStyle = {
-  fontStyle: "italic",
-  margin: "0",
-  paddingBottom: "20px",
-}
-
-const formatStyle = data => {
-  return data.replace(' ', '_').toUpperCase()
 }
