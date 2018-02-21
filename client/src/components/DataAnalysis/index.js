@@ -6,11 +6,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
 const styles = {
-  height: 100,
-  width: 100,
-  margin: 20,
-  textAlign: 'center',
-  display: 'inline-block',
   displayBox: {
     display: "flex",
     flexDirection: "columns",
@@ -18,14 +13,11 @@ const styles = {
   },
   leftSide: {
     marginRight: "10px",
-    width: "40%"
+    width: "35%"
   },
   rightSide: {
     marginRight: "10px",
-    width: "60%"
-  },
-  table: {
-    textAlign: "center"
+    width: "65%"
   },
   paper: {
     margin: "10px"
@@ -80,9 +72,8 @@ export default class DataAnalysis extends Component {
             </Paper>
             <h3 style={{ marginTop: "25px" }}>Ave Glass Price by Tap</h3>
             <Table
-              style={ styles.table }
-              maxHeight={ "300px" }
               fixedHeader={ true }
+              minHeight={ "300px" }
             >
               <TableHeader
                 adjustForCheckbox={ false }
@@ -107,7 +98,6 @@ export default class DataAnalysis extends Component {
           >
             <h3 style={{ marginTop: "20px" }}>List of Beers</h3>
             <Table
-              style={ styles.table }
               maxHeight={ "300px" }
               fixedHeader={ true }
             >

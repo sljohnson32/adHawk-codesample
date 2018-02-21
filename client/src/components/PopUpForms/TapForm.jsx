@@ -66,7 +66,7 @@ export default class TapForm extends Component {
         onClick={ this.handleClose }
       />,
       <RaisedButton
-        label="Add Tap"
+        label={ this.props.actionType === "Add" ? "Add Tap" : "Edit Tap" }
         disabled={ this.state.error || this.state.tapName === "" }
         primary={ true }
         onClick={ this.handleTapAction }
@@ -80,7 +80,7 @@ export default class TapForm extends Component {
         modal={ false }
         open={ this.props.open }
         onRequestClose={ this.handleClose }
-        title="Add Tap"
+        title={ this.props.actionType === "Add" ? "Add Tap" : "Edit Tap" }
       >
         <TextField
           id="tapName"
