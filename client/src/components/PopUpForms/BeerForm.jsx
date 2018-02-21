@@ -128,10 +128,13 @@ export default class TapMenu extends Component {
         modal={ false }
         open={ this.props.open }
         onRequestClose={ this.handleClose }
-        title="Add Beer"
+        title={ actionType === "Edit" ? "Edit Beer" : "Add Beer" }
         titleStyle={ titleStyle }
       >
-        <p style={ pStyle }>Reminder: this will retire the current beer on tap</p>
+        { actionType === "Edit" ?
+          <div/> :
+          <p style={ pStyle }>Reminder: this will retire the current beer on tap</p>
+        }
         <TextField
           id="beerName"
           floatingLabelText="Name of beer"

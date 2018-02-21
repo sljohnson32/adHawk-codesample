@@ -3,7 +3,7 @@ import { beerStyles } from '../../utilities';
 
 const styles = {
   beerCard: {
-    height: "150px",
+    height: "180px",
     marginTop: "10px"
   }
 };

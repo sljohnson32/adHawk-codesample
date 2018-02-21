@@ -3,8 +3,26 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { sortBeerData, sortTapData, calcAvePrice } from '../../utilities';
 import DataAnalysis from '../DataAnalysis';
-import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import Papa from 'papaparse';
+
+const styles = {
+  analysis: {
+    marginTop: "10px"
+  },
+  h3: {
+    margin: "20px 0",
+    fontSize: "30px",
+    width: "100%"
+  },
+  input: {
+    fontSize: "12px",
+    paddingTop: "20px"
+  },
+  p: {
+    color: "red"
+  }
+}
 
 class UploadPage extends Component {
 
@@ -83,15 +101,22 @@ class UploadPage extends Component {
   render() {
     return (
       <div>
+        <h3 style={ styles.h3 }>Beer Data Laboratory</h3>
         { this.state.beersData.length === 0 ?
-          <form ref={ (el) => this.myFormRef = el } onSubmit={ this.handleSubmit }>
+          <form
+            ref={ (el) => this.myFormRef = el }
+            onSubmit={ this.handleSubmit }
+          >
+            <p style={ styles.p }>Step One: Upload your beer data!</p>
             <input
               accept="text/csv"
+              style={ styles.input }
               type="file"
               onChange={ this.handleChange }
             />
-            <FlatButton
+            <RaisedButton
               label="Upload Data"
+              disabled={ this.state.file === null }
               primary={ true }
               type="submit"
             />

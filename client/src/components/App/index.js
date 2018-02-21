@@ -4,7 +4,6 @@ import Header from '../Header'
 import CurrentTaps from '../../containers/CurrentTaps-container'
 import UploadPage from '../UploadPage'
 import '../../index.css';
-import '../../reset.css';
 
 class App extends Component {
 
