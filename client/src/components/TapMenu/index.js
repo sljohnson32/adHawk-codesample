@@ -88,6 +88,7 @@ export default class TapMenu extends Component {
           tapId={ tapId }
           allBreweries={ allBreweries }
           currentBeer={ currentBeer }
+          currentBeerId={ currentBeerId }
           actionType={ this.state.actionType }
           addBeer={ addBeer }
           editBeer={ editBeer }

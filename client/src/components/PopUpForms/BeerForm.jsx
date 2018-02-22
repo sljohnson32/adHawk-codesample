@@ -89,7 +89,7 @@ export default class TapMenu extends Component {
   };
 
   //add beer
-  handleBeerForm(tapId, actionType) {
+  handleBeerForm(tapId, currentBeerId, actionType) {
     let { beerId, beerName, breweryName, beerStyle } = this.state;
     let beerData = {
       tap_id: tapId,
@@ -101,7 +101,7 @@ export default class TapMenu extends Component {
     if (actionType === "Edit") {
       this.props.editBeer(beerId, beerData);
     } else {
-      this.props.addBeer(beerData)
+      this.props.addBeer(beerData, currentBeerId);
     }
     this.handleClose();
   }
@@ -109,7 +109,7 @@ export default class TapMenu extends Component {
   render() {
 
     let { beerName, breweryName } = this.state
-    let { tapId, allBreweries, actionType } = this.props;
+    let { tapId, allBreweries, actionType, currentBeerId } = this.props;
 
     const actions = [
       <FlatButton
@@ -121,7 +121,7 @@ export default class TapMenu extends Component {
         disabled={ beerName === "" || breweryName === "" }
         label={ actionType === "Edit" ? "Edit Beer" : "Add Beer" }
         primary={ true }
-        onClick={ () => this.handleBeerForm(tapId, actionType) }
+        onClick={ () => this.handleBeerForm(tapId, currentBeerId, actionType) }
       />
     ];
 
