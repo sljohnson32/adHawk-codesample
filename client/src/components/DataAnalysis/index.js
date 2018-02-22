@@ -30,7 +30,7 @@ export default class DataAnalysis extends Component {
     return (
       <TableRow key={ index }>
         <TableRowColumn>{ tap.name }</TableRowColumn>
-        <TableRowColumn>{ `$ ${tap.aveGlassPrice}` }</TableRowColumn>
+        <TableRowColumn>${ tap.aveGlassPrice }</TableRowColumn>
       </TableRow>
     )
   }
@@ -41,7 +41,7 @@ export default class DataAnalysis extends Component {
         <TableRowColumn>{ beer.name }</TableRowColumn>
         <TableRowColumn>{ beer.style }</TableRowColumn>
         <TableRowColumn>{ beer.brewer }</TableRowColumn>
-        <TableRowColumn>$ { formatDollars(beer.kegPrice) }</TableRowColumn>
+        <TableRowColumn>${ formatDollars(beer.kegPrice) }</TableRowColumn>
       </TableRow>
     )
   }

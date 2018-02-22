@@ -9,7 +9,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
   card: {
-    width: "280px",
+    minWidth: "280px",
     margin: "5px"
   },
   header: {
