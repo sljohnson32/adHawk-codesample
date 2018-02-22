@@ -50,15 +50,15 @@ const addBeer = (newBeer) => {
 
 export const postBeer = (newBeer, currentBeerId) => {
   return dispatch => {
-    put('beers', currentBeerId, { on_tap: false })
+    if (currentBeerId !== '') {
+      put('beers', currentBeerId, { on_tap: false })
+    };
     post('beers', newBeer)
       .then(response => {
         return dispatch(addBeer(response))
       })
   }
 }
-
-
 
 //PUT TAP
 const editTap = (tapData) => {
