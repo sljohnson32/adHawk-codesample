@@ -25,18 +25,22 @@ const beerStylesData = [
   'Other'
 ];
 
-const contentStyle = {
-  width: '400px',
-};
-
-const titleStyle = {
-  paddingBottom: '10px'
-}
-
-const pStyle = {
-  fontStyle: "italic",
-  margin: "0",
-  paddingBottom: "20px",
+const styles = {
+  dialog: {
+    width: '400px',
+  },
+  title: {
+    paddingBottom: '10px'
+  },
+  p: {
+    fontStyle: "italic",
+    margin: "0",
+    paddingBottom: "20px",
+  },
+  dropdown: {
+    maxHeight: "280px",
+    overflow: "scroll"
+  }
 }
 
 const formatStyle = data => {
@@ -85,7 +89,7 @@ export default class TapMenu extends Component {
   };
 
   //add beer
-  handleBeerForm(tapId, actionType) {
+  handleBeerForm(tapId, currentBeerId, actionType) {
     let { beerId, beerName, breweryName, beerStyle } = this.state;
     let beerData = {
       tap_id: tapId,
@@ -97,7 +101,7 @@ export default class TapMenu extends Component {
     if (actionType === "Edit") {
       this.props.editBeer(beerId, beerData);
     } else {
-      this.props.addBeer(beerData)
+      this.props.addBeer(beerData, currentBeerId);
     }
     this.handleClose();
   }
@@ -105,7 +109,7 @@ export default class TapMenu extends Component {
   render() {
 
     let { beerName, breweryName } = this.state
-    let { tapId, allBreweries, actionType } = this.props;
+    let { tapId, allBreweries, actionType, currentBeerId } = this.props;
 
     const actions = [
       <FlatButton
@@ -117,23 +121,23 @@ export default class TapMenu extends Component {
         disabled={ beerName === "" || breweryName === "" }
         label={ actionType === "Edit" ? "Edit Beer" : "Add Beer" }
         primary={ true }
-        onClick={ () => this.handleBeerForm(tapId, actionType) }
+        onClick={ () => this.handleBeerForm(tapId, currentBeerId, actionType) }
       />
     ];
 
     return (
       <Dialog
         actions={ actions }
-        contentStyle={ contentStyle }
+        contentStyle={ styles.dialog }
         modal={ false }
         open={ this.props.open }
         onRequestClose={ this.handleClose }
         title={ actionType === "Edit" ? "Edit Beer" : "Add Beer" }
-        titleStyle={ titleStyle }
+        titleStyle={ styles.title }
       >
         { actionType === "Edit" ?
           <div/> :
-          <p style={ pStyle }>Reminder: this will retire the current beer on tap</p>
+          <p style={ styles.p }>Reminder: this will retire the current beer on tap</p>
         }
         <TextField
           id="beerName"
@@ -150,6 +154,7 @@ export default class TapMenu extends Component {
           dataSource={ beerStylesData }
           filter={ AutoComplete.caseInsensitiveFilter }
           openOnFocus={ true }
+          listStyle={ styles.dropdown }
         />
         <AutoComplete
           floatingLabelText="Name of brewery"
@@ -159,6 +164,7 @@ export default class TapMenu extends Component {
           openOnFocus={ true }
           filter={ AutoComplete.caseInsensitiveFilter }
           dataSource={ allBreweries }
+          listStyle={ styles.dropdown }
         />
       </Dialog>
     );

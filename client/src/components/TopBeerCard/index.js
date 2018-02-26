@@ -17,7 +17,7 @@ export const TopBeerCard = (props) => {
       <h3>{ beer.name }</h3>
       <h4>Style: { beer.style }</h4>
       <h4>Brewer: { beer.brewer}</h4>
-      <h4>Total Keg Cost: $ { formatDollars(beer.kegPrice) }</h4>
+      <h4>Total Keg Cost: ${ formatDollars(beer.kegPrice) }</h4>
     </div>
   );
 };
