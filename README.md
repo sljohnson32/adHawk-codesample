@@ -1,3 +1,4 @@
+## Intro
 We sometimes enjoy a nice cold one at the end of a hard day. Recently, we decided we wanted to track what beers we have on tap, in addition to historical metrics on how long beers tend to last.
 
 We tasked one of our top developers with building an app.
@@ -51,7 +52,3 @@ The following are mandatory minimum requirements:
 #### Notes
 There is a README in the /api folder explaining the API and data model structure.
 For your convenience, an `api_client.js` file is provided in the `client` folder. This will make it easier to fetch data from the server.
-
-
-
-

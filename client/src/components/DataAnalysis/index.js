@@ -20,7 +20,8 @@ const styles = {
     width: "65%"
   },
   paper: {
-    margin: "10px"
+    margin: "10px",
+    padding: "10px"
   }
 };
 
@@ -55,7 +56,7 @@ export default class DataAnalysis extends Component {
 
 
     return (
-      <Paper zDepth={ 1 }>
+      <Paper zDepth={ 1 } style={ styles.paper }>
         <RaisedButton
           label="Reset Data"
           primary={ true }
