@@ -17,7 +17,7 @@ const styles = {
   },
   input: {
     fontSize: "12px",
-    paddingTop: "20px"
+    padding: "20px 10px"
   },
   p: {
     color: "red"
