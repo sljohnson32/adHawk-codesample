@@ -69,7 +69,7 @@ class UploadPage extends Component {
       }
     }
 
-    this.setState({ beersData: sortBeerData(this.createArray(beersData)) , tapsData: sortTapData(calcAvePrice(this.createArray(tapsData))), file: "" });
+    this.setState({ beersData: sortBeerData(this.createArray(beersData)) , tapsData: sortTapData(calcAvePrice(this.createArray(tapsData))), file: null });
   }
 
   createArray(obj) {

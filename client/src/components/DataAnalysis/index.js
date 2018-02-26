@@ -56,7 +56,7 @@ export default class DataAnalysis extends Component {
 
 
     return (
-      <Paper zDepth={ 1 } style={styles.paper}>
+      <Paper zDepth={ 1 } style={ styles.paper }>
         <RaisedButton
           label="Reset Data"
           primary={ true }
